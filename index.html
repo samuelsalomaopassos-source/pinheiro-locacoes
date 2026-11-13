@@ -88,7 +88,7 @@ h1,h2,h3,p{margin:0}
 /* ---------- HERO ---------- */
 .hero{position:relative;height:100svh;min-height:680px;overflow:hidden;color:var(--on-dark);background:var(--navy-deep)}
 .hero .ph{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden}
-.hero .ph img{width:100%;height:118%;object-fit:cover;object-position:50% 38%;will-change:transform}
+.hero .ph img{width:100%;height:118%;object-fit:cover;object-position:50% 0%;will-change:transform}
 .hero .tint{position:absolute;left:0;right:0;top:0;height:62%;background:rgba(15,22,54,.22)}
 .ridges{position:absolute;left:0;width:100%;top:31%;height:27%;overflow:visible;pointer-events:none}
 .ridges path{fill:var(--navy-deep);stroke:var(--on-dark);stroke-width:1.1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
@@ -276,7 +276,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
   .nav a.lk{display:none}
   .nav .mark b{display:none}
   .hero .ph,.hero .tint{height:52%}
-  .hero .ph img{object-position:28% 45%}
+  .hero .ph img{object-position:30% 30%}
   .ridges{top:24%;height:25%}
   .hero .ground{grid-template-columns:minmax(0,1fr);gap:22px;bottom:96px}
   .hero .ln{font-size:12.8vw}
@@ -335,7 +335,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 <header class="hero" id="topo">
   <div class="ph"><picture>
-    <img id="hero-img" src="img/hero.webp" width="2000" height="1240" alt="Escavadeira New Holland E145C EVO da Pinheiro Locações em área de plantio, com eucaliptos ao fundo">
+    <img id="hero-img" src="img/hero-jd.webp" width="1440" height="560" alt="Escavadeira John Deere da Pinheiro Locações com o braço erguido em obra rural">
   </picture></div>
   <div class="tint"></div>
   <svg class="ridges" id="ridges" preserveAspectRatio="none" aria-hidden="true"></svg>
@@ -366,19 +366,19 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
         <li><button type="button" data-img="loteamento" data-d="Corte, aterro e nivelamento de lotes, ruas e loteamentos inteiros.">Terraplenagem de loteamentos</button></li>
         <li><button type="button" data-img="urbano_rua" data-d="Escavação de valas, redes e fundações no meio da cidade, com cuidado com o entorno.">Valas, redes e fundações</button></li>
         <li><button type="button" data-img="drenagem" data-d="Abertura de vala e assentamento de tubulação para escoamento de água.">Drenagem pluvial</button></li>
-        <li><button type="button" data-img="komatsu" data-d="Recuperação de vias de acesso e abertura de novas ruas.">Abertura e recuperação de vias</button></li>
+        <li><button type="button" data-img="jd_caminhao" data-d="Recuperação de vias de acesso e abertura de novas ruas.">Abertura e recuperação de vias</button></li>
         <li><button type="button" data-img="base" data-d="Preparo de terreno para condomínios e empreendimentos residenciais.">Condomínios e empreendimentos</button></li>
         <li><button type="button" data-img="noite" data-d="Demolição executada com técnica, segurança e responsabilidade.">Demolição</button></li>
-        <li><button type="button" data-img="nh_escavando" data-d="Retirada de vegetação, entulho e regularização do terreno antes da obra.">Limpeza de terreno</button></li>
+        <li><button type="button" data-img="jd_barranco" data-d="Retirada de vegetação, entulho e regularização do terreno antes da obra.">Limpeza de terreno</button></li>
       </ul>
       <p class="sum">Lote, rua, rede e condomínio: a obra urbana do começo ao acabamento.</p>
     </div>
     <div class="col rv">
       <h3>No campo</h3>
       <ul>
-        <li><button type="button" data-img="area_aerea" data-d="Área preparada e nivelada para o plantio, inclusive em relevo montanhoso.">Preparo de área para plantio</button></li>
+        <li><button type="button" data-img="jd_campo" data-d="Área preparada e nivelada para o plantio, inclusive em relevo montanhoso.">Preparo de área para plantio</button></li>
         <li><button type="button" data-img="barragem" data-d="Barragens executadas com planejamento, para segurança hídrica da propriedade.">Barragens</button></li>
-        <li><button type="button" data-img="fazenda" data-d="Escavação de reservatórios, como o de 2 milhões de litros já entregue.">Reservatórios de água</button></li>
+        <li><button type="button" data-img="jd_buraco" data-d="Escavação de reservatórios, como o de 2 milhões de litros já entregue.">Reservatórios de água</button></li>
         <li><button type="button" data-img="irrigacao" data-d="Valas e canais com nivelamento para o sistema de irrigação funcionar bem.">Canais e irrigação</button></li>
         <li><button type="button" data-img="encosta" data-d="Retirada de tocos de eucalipto e preparo da área para o próximo ciclo.">Destoca de eucalipto</button></li>
         <li><button type="button" data-img="santarita" data-d="Abertura e manutenção de estradas internas e acessos da fazenda.">Estradas e acessos</button></li>
@@ -390,9 +390,9 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
       <ul>
         <li><button type="button" data-img="prancha" data-d="Transporte da sua máquina com caminhão prancha, com segurança, para todo o Brasil.">Caminhão prancha</button></li>
         <li><button type="button" data-img="munck" data-d="Içamento de cargas e apoio a serviços públicos, como poda de árvores.">Caminhão Munck</button></li>
-        <li><button type="button" data-img="historia" data-d="Mobilização de máquinas e caçambas para a sua obra no dia combinado.">Mobilização de equipamentos</button></li>
+        <li><button type="button" data-img="jd_prancha" data-d="Mobilização de máquinas e caçambas para a sua obra no dia combinado.">Mobilização de equipamentos</button></li>
         <li><button type="button" data-img="munck" data-d="Poda de árvores com Munck, em conjunto com prefeitura e Meio Ambiente.">Poda com Munck</button></li>
-        <li><button type="button" data-img="jcb20" data-d="Revisões preventivas em dia antes de cada mobilização.">Manutenção preventiva</button></li>
+        <li><button type="button" data-img="jd_monte" data-d="Revisões preventivas em dia antes de cada mobilização.">Manutenção preventiva</button></li>
       </ul>
       <p class="sum">A máquina chega até você: prancha, Munck e mobilização com segurança.</p>
     </div>
@@ -404,7 +404,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 </section>
 
 <section class="frota" id="frota" aria-labelledby="f-h">
-  <div class="plate"><div class="sq" id="f-sq" data-cursor="Frota"><img src="img/nh_escavando.webp" width="900" height="1600" alt="Escavadeira hidráulica New Holland escavando"><span class="tag" id="f-tag">13 a 35 t</span></div></div>
+  <div class="plate"><div class="sq" id="f-sq" data-cursor="Frota"><img src="img/jd_buraco.webp" width="640" height="1136" alt="Escavadeira hidráulica John Deere escavando"><span class="tag" id="f-tag">13 a 35 t</span></div></div>
   <div class="side">
     <div>
       <h2 class="h2 split" id="f-h">Frota</h2>
@@ -446,25 +446,25 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
   <article class="proj"><div class="stage">
     <h2 class="h2 ohead" id="o-h">Obras</h2>
     <div class="pane l"><img src="img/barragem.webp" width="640" height="1136" alt="Vista aérea da barragem finalizada em meio à mata" loading="lazy"></div>
-    <div class="pane r"><img src="img/fazenda.webp" width="1250" height="1600" alt="Escavadeira abrindo reservatório em terra vermelha" loading="lazy"></div>
+    <div class="pane r"><img src="img/jd_buraco.webp" width="640" height="1136" alt="Escavadeira John Deere escavando reservatório" loading="lazy"></div>
     <div class="ptitle"><h3><span class="a">Barragem</span><span class="b" aria-hidden="true">Barragem</span></h3>
       <p class="cap"><span>Barragem e reservatório · Rural · 2026</span><br><a href="https://www.instagram.com/p/DVJtmu7EREr/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
     <div class="pane l"><img src="img/santarita.webp" width="720" height="1280" alt="Área montanhosa terraplenada vista de cima em Santa Rita do Planalto" loading="lazy"></div>
-    <div class="pane r"><img src="img/encosta.webp" width="720" height="1024" alt="Escavadeira trabalhando em encosta íngreme" loading="lazy"></div>
+    <div class="pane r"><img src="img/jd_barranco.webp" width="640" height="1136" alt="Escavadeira John Deere cortando barranco de terra vermelha" loading="lazy"></div>
     <div class="ptitle"><h3><span class="a">Encosta</span><span class="b" aria-hidden="true">Encosta</span></h3>
       <p class="cap"><span>Relevo montanhoso · Santa Rita do Planalto · 2026</span><br><a href="https://www.instagram.com/p/DcttlXiRmGk/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
     <div class="pane l"><img src="img/area_aerea.webp" width="900" height="506" alt="Vista aérea de grande área preparada para plantio" loading="lazy"></div>
-    <div class="pane r"><img src="img/irrigacao.webp" width="640" height="568" alt="Escavadeira abrindo vala para irrigação em pasto" loading="lazy"></div>
+    <div class="pane r"><img src="img/jd_campo.webp" width="720" height="1280" alt="Escavadeira John Deere preparando área de plantio" loading="lazy"></div>
     <div class="ptitle"><h3><span class="a">Plantio</span><span class="b" aria-hidden="true">Plantio</span></h3>
       <p class="cap"><span>Preparo de área e irrigação · Rural · 2026</span><br><a href="https://www.instagram.com/p/DcEQ2egEZ1z/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
     <div class="pane l"><img src="img/loteamento.webp" width="720" height="1280" alt="Loteamento com ruas e rotatória sendo terraplenado, visto de cima" loading="lazy"></div>
-    <div class="pane r"><img src="img/komatsu.webp" width="900" height="1600" alt="Escavadeira Komatsu PC130 em obra ao entardecer" loading="lazy"></div>
+    <div class="pane r"><img src="img/jd_caminhao.webp" width="640" height="1136" alt="Escavadeira John Deere carregando caminhão caçamba" loading="lazy"></div>
     <div class="ptitle"><h3><span class="a">Lotes</span><span class="b" aria-hidden="true">Lotes</span></h3>
       <p class="cap"><span>Terraplenagem de loteamento · Urbano · 2026</span><br><a href="https://www.instagram.com/p/De_yMHTRA3-/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
@@ -483,12 +483,12 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
       <p class="rv"><b>Primeiro, a conversa.</b> Você chama no WhatsApp, conta o que precisa, onde é e o prazo. Se for preciso, a gente vai até o local ver o terreno antes de fechar.</p></div>
   </div>
   <div class="row rb">
-    <figure class="par clip" data-cursor="Ver"><img src="img/prancha.webp" width="1200" height="1600" alt="Caminhão prancha da Pinheiro transportando máquina na estrada" loading="lazy"></figure>
+    <figure class="par clip" data-cursor="Ver"><img src="img/jd_prancha.webp" width="640" height="1136" alt="Escavadeira John Deere embarcada no caminhão para mobilização" loading="lazy"></figure>
     <p class="rv"><b>Depois, a mobilização.</b> A máquina sai da nossa base com a revisão preventiva em dia e chega à obra no nosso caminhão prancha, no dia combinado.</p>
   </div>
   <div class="row rc">
     <p class="rv"><b>Por fim, o serviço.</b> Operador experiente no comando e acompanhamento de perto, do nascer ao pôr do sol, até o terreno ficar do jeito que o projeto pede.</p>
-    <figure class="par clip" data-cursor="Ver"><img src="img/por_do_sol.webp" width="1141" height="1356" alt="Escavadeira New Holland trabalhando ao pôr do sol" loading="lazy"></figure>
+    <figure class="par clip" data-cursor="Ver"><img src="img/jd_retro_obra.webp" width="640" height="1136" alt="Retroescavadeira John Deere trabalhando no fim de tarde" loading="lazy"></figure>
   </div>
 </section>
 
@@ -653,9 +653,9 @@ $$('.servicos li button').forEach(b=>{const show=()=>{
 
 /* ---------- frota ---------- */
 const M=[
- {t:'Escavadeira hidráulica',tag:'13 a 35 t',img:'nh_escavando',alt:'Escavadeira hidráulica New Holland escavando',d:'Para escavação pesada, valas, barragens, reservatórios, destoca e carregamento de caminhões.',s:[['Modelos','New Holland E145C EVO, Komatsu PC130, JCB JS130LC'],['Porte','de 13 a 35 toneladas'],['Com','operador experiente']],q:'escavadeira hidráulica'},
+ {t:'Escavadeira hidráulica',tag:'13 a 35 t',img:'jd_buraco',alt:'Escavadeira hidráulica John Deere escavando',d:'Para escavação pesada, valas, barragens, reservatórios, destoca e carregamento de caminhões.',s:[['Modelos','John Deere, New Holland E145C EVO, Komatsu PC130, JCB JS130LC'],['Porte','de 13 a 35 toneladas'],['Com','operador experiente']],q:'escavadeira hidráulica'},
  {t:'Pá carregadeira',tag:'XCMG',img:'pa_carregadeira',alt:'Pá carregadeira XCMG com garfo em área de destoca',d:'Movimenta e carrega material com agilidade. Com garfo, faz a limpeza e a destoca da área.',s:[['Modelo','XCMG LW300KV'],['Uso','carregamento, pátio, destoca'],['Com','operador experiente']],q:'pá carregadeira'},
- {t:'Retroescavadeira',tag:'JCB 3CX',img:'retro',alt:'Retroescavadeira JCB 3CX amarela',d:'A máquina das obras urbanas: valas, ligações, limpeza de terreno e serviços de menor porte.',s:[['Modelo','JCB 3CX'],['Uso','valas, redes, limpeza'],['Com','operador experiente']],q:'retroescavadeira'},
+ {t:'Retroescavadeira',tag:'John Deere',img:'jd_retro',alt:'Retroescavadeira John Deere da Pinheiro Locações',d:'A máquina das obras urbanas: valas, ligações, limpeza de terreno e serviços de menor porte.',s:[['Modelos','John Deere e JCB 3CX'],['Uso','valas, redes, limpeza'],['Com','operador experiente']],q:'retroescavadeira'},
  {t:'Caminhão prancha',tag:'Todo o Brasil',img:'prancha',alt:'Caminhão prancha da Pinheiro transportando pá carregadeira',d:'Leva a sua máquina com segurança aonde ela precisar ir, no Extremo Sul da Bahia ou em qualquer estado.',s:[['Carga','máquinas pesadas e tratores'],['Alcance','todo o Brasil'],['Com','motorista da casa']],q:'caminhão prancha (transporte de máquina)'},
  {t:'Caminhão Munck',tag:'Içamento',img:'munck',alt:'Caminhão Munck da Pinheiro em serviço na avenida',d:'Içamento e movimentação de cargas, apoio a serviços públicos e poda de árvores.',s:[['Uso','içamento, cargas, poda'],['Já atendeu','Prefeitura de Teixeira de Freitas'],['Com','operador da casa']],q:'caminhão Munck'}];
 let cur_=0;const tabs=$$('.tabs button'),ind=$('#ind'),sq=$('#f-sq'),tag=$('#f-tag'),city=$('#city'),msg=$('#msg'),go=$('#go');
