@@ -86,25 +86,26 @@ h1,h2,h3,p{margin:0}
 .logo .p{stroke:var(--navy)} .logo .l{stroke:var(--accent)}
 
 /* ---------- HERO ---------- */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;color:var(--on-dark);background:var(--navy-deep);display:grid;grid-template-rows:auto 1fr auto;padding:0 var(--m)}
-.hero .ph{position:absolute;inset:-4%}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;will-change:transform}
-.hero .scrim{position:absolute;inset:0;background:rgba(10,14,34,.42)}
-.topo{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;will-change:transform}
-.topo path{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:.6;vector-effect:non-scaling-stroke}
-.hero h1{perspective:900px;grid-row:1 / span 3;grid-column:1;display:grid;grid-template-rows:auto 1fr auto;position:relative;z-index:2;font-weight:inherit}
-.hero .ln{display:block;font:800 clamp(64px,12.4vw,240px)/.86 var(--display);letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;will-change:transform}
-.hero .ln1{grid-row:1;margin-top:clamp(96px,11vh,120px)}
-.hero .ln2{grid-row:3;justify-self:end;margin-bottom:clamp(30px,4.2vw,56px)}
-.hero .mid{grid-row:2;grid-column:1;align-self:center;position:relative;z-index:3;margin-left:30vw;max-width:46ch;background:var(--navy-deep);padding:28px 28px 30px}
-.hero .mid p{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);line-height:1.45;font-weight:500;margin-bottom:24px;text-wrap:pretty}
-.level{position:absolute;z-index:3;left:var(--m);top:52%;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500}
-.level .bar{width:120px;height:6px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.hero{position:relative;height:100svh;min-height:680px;overflow:hidden;color:var(--on-dark);background:var(--navy-deep)}
+.hero .ph{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden}
+.hero .ph img{width:100%;height:118%;object-fit:cover;object-position:50% 38%;will-change:transform}
+.hero .tint{position:absolute;left:0;right:0;top:0;height:62%;background:rgba(15,22,54,.22)}
+.ridges{position:absolute;left:0;width:100%;top:31%;height:27%;overflow:visible;pointer-events:none}
+.ridges path{fill:var(--navy-deep);stroke:var(--on-dark);stroke-width:1.1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.ridges path.gold{stroke:var(--accent);stroke-width:1.6}
+.hero .ground{position:absolute;z-index:3;left:var(--m);right:var(--m);bottom:clamp(96px,12vh,120px);display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,30vw);align-items:end;gap:48px}
+.hero h1{perspective:900px;font-weight:inherit}
+.hero .ln{display:block;font:800 clamp(56px,8.8vw,176px)/.9 var(--display);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;padding-top:.08em}
+.hero .ln2{color:var(--accent)}
+.hero .mid{padding-bottom:.2em}
+.hero .mid p.alt{margin:16px 0 0;font-size:15px;font-weight:500;color:var(--on-dark-muted)}
+.hero .mid p.alt a{color:var(--on-dark);text-decoration:none;font-weight:600}
+.hero .mid p.alt a:hover{color:var(--accent)}
+.hero .mid p{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);line-height:1.5;font-weight:500;margin-bottom:26px;text-wrap:pretty;color:var(--on-dark)}
+.level{position:absolute;z-index:3;right:var(--m);top:calc(31% - 52px);display:flex;align-items:center;gap:14px;font-size:14px;font-weight:500;background:var(--navy-deep);padding:9px 14px}
+.level .bar{width:120px;height:6px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
 .level .bar i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
-.scroll-hint{position:absolute;z-index:3;right:var(--m);top:52%;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
-.scroll-hint i{width:14px;height:22px;border:2px solid var(--on-dark);border-radius:8px;position:relative}
-.scroll-hint i::after{content:"";position:absolute;left:50%;top:4px;width:2px;height:5px;margin-left:-1px;background:var(--accent);animation:wheel 1.6s var(--ease) infinite}
-@keyframes wheel{0%{transform:translateY(0);opacity:1}80%{transform:translateY(8px);opacity:0}100%{opacity:0}}
+.level b{font-weight:600;color:var(--accent);min-width:3ch;text-align:right}
 
 /* ---------- MARQUEE ---------- */
 .marq{background:var(--accent);color:var(--ink);overflow:hidden;padding:22px 0;white-space:nowrap}
@@ -272,13 +273,15 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 /* ---------- CELULAR ---------- */
 @media (max-width:860px){
-  .nav .lk{display:none}
+  .nav a.lk{display:none}
   .nav .mark b{display:none}
-  .hero .ln{font-size:13.2vw}
-  .hero .mid{margin-left:0}
-  .hero .ph img{object-position:30% 80%}
-  .level{top:auto;bottom:calc(13.2vw + 56px)}
-  .scroll-hint{display:none}
+  .hero .ph,.hero .tint{height:52%}
+  .hero .ph img{object-position:28% 45%}
+  .ridges{top:24%;height:25%}
+  .hero .ground{grid-template-columns:minmax(0,1fr);gap:22px;bottom:96px}
+  .hero .ln{font-size:12.8vw}
+  .level{top:calc(24% - 48px);font-size:13px}
+  .level .bar{width:80px}
   .servicos .grid{grid-template-columns:1fr;row-gap:40px;margin-top:48px}
   .servicos .col:nth-child(n){grid-column:1}
   .servicos li button{font-size:18px;line-height:1.4}
@@ -332,23 +335,21 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 <header class="hero" id="topo">
   <div class="ph"><picture>
-    <source media="(max-width:860px)" srcset="img/hero-m.webp">
     <img id="hero-img" src="img/hero.webp" width="2000" height="1240" alt="Escavadeira New Holland E145C EVO da Pinheiro Locações em área de plantio, com eucaliptos ao fundo">
   </picture></div>
-  <div class="scrim"></div>
-  <svg class="topo" id="topo-lines" preserveAspectRatio="none" aria-hidden="true"></svg>
-  <h1>
-    <span class="ln ln1">Pinheiro</span>
-    <span class="ln ln2">Locações</span>
-  </h1>
-  <div class="mid" id="hero-mid">
-    <p>Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Da obra na cidade à fazenda.</p>
-    <a class="btn mag" data-cursor="WhatsApp" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
-      Pedir orçamento no WhatsApp</a>
+  <div class="tint"></div>
+  <svg class="ridges" id="ridges" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <div class="level" aria-hidden="true"><span id="lvl-t">Terreno bruto</span><span class="bar"><i id="lvl"></i></span><b id="lvl-n">0%</b></div>
+  <div class="ground">
+    <h1><span class="ln ln1">Pinheiro</span><span class="ln ln2">Locações</span></h1>
+    <div class="mid" id="hero-mid">
+      <p>Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Da obra na cidade à fazenda.</p>
+      <a class="btn mag" data-cursor="WhatsApp" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+        Pedir orçamento no WhatsApp</a>
+      <p class="alt">Ou ligue: <a href="tel:+5573998402367">(73) 99840-2367</a> · Davi <a href="tel:+5573999327388">(73) 99932-7388</a></p>
+    </div>
   </div>
-  <div class="level" aria-hidden="true"><span id="lvl-t">Terreno bruto</span><span class="bar"><i id="lvl"></i></span></div>
-  <div class="scroll-hint" aria-hidden="true">Role para nivelar <i></i></div>
 </header>
 
 <div class="marq" aria-hidden="true"><div class="track" id="marq">
@@ -587,16 +588,34 @@ function contours(svg,n,base){
     const y=s.y-amp*(hill*s.k*(1-i/(n*1.4))+w)-(wob||0)*Math.sin(u*6+t+i*.4)*4;
     d+=(x?'L':'M')+x+' '+y.toFixed(1)}paths[i].setAttribute('d',d)})};
 }
-const drawHero=contours($('#topo-lines'),15), drawFlat=contours($('#flat'),22);
-const hero=$('.hero'),lvl=$('#lvl'),lvlT=$('#lvl-t');
-let heroP=0;
-function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.8)));lvl.style.transform=`scaleX(${heroP})`;lvlT.textContent=heroP>.98?'Terreno nivelado':'Terreno bruto'}
-let t0=performance.now();
+const drawFlat=contours($('#flat'),22);
+/* relevo em camadas (cristas): sobe na entrada, reage ao mouse e se nivela com a rolagem */
+const NS='http://www.w3.org/2000/svg',rsvg=$('#ridges'),RW=1000,RH=400,RN=matchMedia('(max-width:860px)').matches?18:26;
+rsvg.setAttribute('viewBox',`0 0 ${RW} ${RH}`);
+const R=[...Array(RN)].map((_,i)=>{const p=document.createElementNS(NS,'path');if(i%7===4)p.setAttribute('class','gold');p.setAttribute('stroke-opacity',(.22+.78*i/(RN-1)).toFixed(2));rsvg.appendChild(p);
+  return{p,i,ph:[Math.random()*9,Math.random()*9,Math.random()*9],pk:[...Array(3)].map(()=>({x:.12+Math.random()*.8,w:.035+Math.random()*.07,h:.35+Math.random()*.85}))}});
+const hero=$('.hero'),lvl=$('#lvl'),lvlT=$('#lvl-t'),lvlN=$('#lvl-n');
+let heroP=0,intro=reduce?1:0,mx=.5,my=.5,mb=0,mbT=0;
+function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.75)));lvl.style.transform=`scaleX(${heroP})`;lvlN.textContent=Math.round(heroP*100)+'%';lvlT.textContent=heroP>.98?'Terreno nivelado':'Terreno bruto'}
+hero.addEventListener('pointermove',e=>{const r=rsvg.getBoundingClientRect();mx=(e.clientX-r.left)/r.width;my=(e.clientY-r.top)/r.height;mbT=(my>-.3&&my<1.1)?1:0},{passive:true});
+hero.addEventListener('pointerleave',()=>mbT=0);
+function drawRidges(t){const A=intro*(1-heroP),gap=(RH-46)/(RN-1);
+  R.forEach(r=>{const yb=26+r.i*gap;const fi=r.i/(RN-1);let d='';
+    for(let x=0;x<=RW;x+=8){const u=x/RW;const env=Math.pow(Math.sin(Math.PI*u),1.6);
+      let h=0;r.pk.forEach(k=>{const kx=k.x+.02*Math.sin(t*.25+r.ph[0]);h+=k.h*(1+.15*Math.sin(t*.7+r.i))*Math.exp(-Math.pow((u-kx)/k.w,2))});
+      const n=Math.sin(u*23+r.ph[0]+t*.5)*.08+Math.sin(u*47+r.ph[1]-t*.4)*.05+Math.sin(u*9+r.ph[2])*.1;
+      const bump=mb*Math.exp(-Math.pow((u-mx)/.07,2))*Math.exp(-Math.pow((fi-my)/.22,2))*1.1;
+      const y=yb-A*env*(h+Math.max(0,n+.12))*58-bump*48*(1-heroP);
+      d+=(x?'L':'M-30 '+y.toFixed(1)+'L')+x+' '+y.toFixed(1);if(x===RW)d+=`L${RW+30} ${y.toFixed(1)}`}
+    r.p.setAttribute('d',d+`L${RW+30} ${RH+3000}L-30 ${RH+3000}Z`)})}
+let t0=performance.now(),introStart=null;
 function frame(now){const t=reduce?0:(now-t0)/1000;
-  if(scrollY<hero.offsetHeight*1.1)drawHero(1-heroP,t);
+  if(introStart===null)introStart=now; if(!reduce){const k=Math.min(1,(now-introStart-250)/1700);intro=k<=0?0:1-Math.pow(1-k,3)}
+  mb+=(mbT-mb)*.06;
+  if(scrollY<hero.offsetHeight*1.1)drawRidges(t);
   const c=$('#contato').getBoundingClientRect(); if(c.top<innerHeight&&c.bottom>0)drawFlat(0,t,reduce?0:1);
   if(!reduce)requestAnimationFrame(frame)}
-heroProg(); requestAnimationFrame(frame); if(reduce){drawHero(.6,0);drawFlat(0,0,0)}
+heroProg(); requestAnimationFrame(frame); if(reduce){drawRidges(0);drawFlat(0,0,0)}
 addEventListener('scroll',heroProg,{passive:true});
 
 /* ---------- nav: sólida depois do topo, some ao descer ---------- */
@@ -673,17 +692,15 @@ if(window.SplitText){
   lines.forEach((ln,li)=>{const sp=new SplitText(ln,{type:'chars'});gsap.from(sp.chars,{yPercent:70,rotationX:-80,opacity:0,transformOrigin:'50% 100% -40px',duration:.8,ease:'expo.out',stagger:.025,delay:.05+li*.1})});
 }
 gsap.from('#hero-mid',{y:30,opacity:.25,duration:.9,ease:'expo.out',delay:.35});
-gsap.from(['.level','.scroll-hint'],{opacity:0,duration:.8,delay:.9});
+gsap.from('.level',{opacity:0,x:20,duration:.9,ease:'expo.out',delay:1.2});
 gsap.from('#nav > *',{y:-20,opacity:0,duration:.8,ease:'expo.out',stagger:.06,delay:.2});
 /* foto do topo: zoom lento + parallax do mouse + saída com a rolagem */
 const himg=$('#hero-img');
 gsap.fromTo(himg,{scale:1.12},{scale:1,duration:2.4,ease:'expo.out'});
-if(fine){const qx=gsap.quickTo(himg,'x',{duration:1.2,ease:'power3'}),qy=gsap.quickTo(himg,'y',{duration:1.2,ease:'power3'}),
-  tx=gsap.quickTo('#topo-lines','x',{duration:1.4,ease:'power3'}),ty=gsap.quickTo('#topo-lines','y',{duration:1.4,ease:'power3'});
-  hero.addEventListener('mousemove',e=>{const u=e.clientX/innerWidth-.5,v=e.clientY/innerHeight-.5;qx(u*-22);qy(v*-14);tx(u*14);ty(v*10)})}
-gsap.to('.hero .ph',{yPercent:14,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.hero .ln1',{xPercent:-12,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.hero .ln2',{xPercent:10,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+if(fine){const qx=gsap.quickTo(himg,'x',{duration:1.2,ease:'power3'}),qy=gsap.quickTo(himg,'y',{duration:1.2,ease:'power3'});
+  hero.addEventListener('mousemove',e=>{const u=e.clientX/innerWidth-.5,v=e.clientY/innerHeight-.5;qx(u*-20);qy(v*-12)})}
+gsap.to('#hero-img',{yPercent:-10,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero .ground',{y:-60,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
 
 /* ---------- faixa amarela: velocidade reage à rolagem ---------- */
 const mq=$('#marq');mq.innerHTML+=mq.innerHTML;
