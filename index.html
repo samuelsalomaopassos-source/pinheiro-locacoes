@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0F1636">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pinheiro Locações — Terraplenagem e locação de máquinas">
+<meta property="og:description" content="Escavadeiras, pá carregadeira, retro, prancha e Munck no Extremo Sul da Bahia. Orçamento pelo WhatsApp.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<title>Pinheiro Locações — Terraplenagem e locação de máquinas pesadas</title>
+<meta name="description" content="Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Escavadeiras, pá carregadeira, retroescavadeira, caminhão prancha e Munck. Orçamento pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EDEEF0; --ground-2:#E2E4E9; --ink:#111834; --muted:#454C69;
+  --navy:#253982; --navy-deep:#0F1636; --accent:#F0BC2E; --accent-hi:#FFD25A; --on-dark:#F4F5F8; --on-dark-muted:#C3C8DA;
+  --display:"Unbounded",system-ui,sans-serif; --text:"Onest",system-ui,sans-serif;
+  --m:clamp(16px,2.2vw,32px);
+  --ease:cubic-bezier(.16,1,.3,1); --ease-io:cubic-bezier(.65,0,.35,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 clamp(1.0625rem,1rem + .25vw,1.1875rem)/1.5 var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+::selection{background:var(--accent);color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--accent);color:var(--ink);padding:10px 14px;z-index:99}
+.skip:focus{left:8px}
+
+/* ---------- BOTÕES ---------- */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.7em;background:var(--accent);color:var(--ink);text-decoration:none;font:600 1.0625rem/1 var(--text);padding:1.1em 1.45em;border:0;border-radius:0;cursor:pointer;transition:color .45s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
+.btn:hover{color:var(--accent)}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn .arr{display:inline-block;overflow:hidden;width:1em;height:1em;position:relative}
+.btn .arr i{position:absolute;inset:0;font-style:normal;transition:transform .5s var(--ease)}
+.btn .arr i+i{transform:translateX(-120%)}
+.btn:hover .arr i:first-child{transform:translateX(120%)}
+.btn:hover .arr i+i{transform:none}
+.btn.dark{background:var(--ink);color:var(--on-dark)}
+.btn.dark::before{background:var(--accent)}
+.btn.dark:hover{color:var(--ink)}
+.mag{will-change:transform}
+
+/* ---------- CURSOR ---------- */
+.cur,.cur-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:200;opacity:0;transition:opacity .3s}
+.cur{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--accent);mix-blend-mode:multiply;display:grid;place-items:center;transform:scale(.25);transition:transform .45s var(--ease),opacity .3s,background-color .3s}
+.cur span{font:600 13px var(--text);color:var(--ink);opacity:0;transition:opacity .25s;white-space:nowrap}
+.cur.big{transform:scale(1)}
+.cur.label{transform:scale(2.1);mix-blend-mode:normal}
+.cur.label span{opacity:1;font-size:7px}
+.cur.dark-bg{mix-blend-mode:normal}
+@media (pointer:fine){.cur.on{opacity:1}}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:flex-end;align-items:center;gap:clamp(16px,2vw,30px);padding:18px var(--m);color:var(--on-dark);font-size:15px;transition:transform .6s var(--ease),background-color .4s,padding .4s}
+.nav.solid{background:var(--navy-deep);padding-top:10px;padding-bottom:10px}
+.nav.hide{transform:translateY(-110%)}
+.nav a{text-decoration:none;font-weight:500}
+.nav a.lk{position:relative;display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
+.nav a.lk span{display:block;transition:transform .5s var(--ease)}
+.nav a.lk span+span{color:var(--accent)}
+.nav a.lk:hover span{transform:translateY(-100%)}
+.nav .mark{display:flex;align-items:center;gap:12px;margin-right:auto}
+.nav .mark b{font:800 15px var(--display);letter-spacing:-.02em;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .5s var(--ease)}
+.nav.solid .mark b{opacity:1;transform:none}
+.nav .btn{font-size:15px;padding:.85em 1.15em}
+.logo-chip{background:#fff;display:grid;place-items:center;width:52px;height:52px;transition:transform .5s var(--ease)}
+.nav .mark:hover .logo-chip{transform:rotate(-8deg)}
+.logo{width:44px;height:44px}
+.logo path{fill:none;stroke-width:15;stroke-linejoin:miter}
+.logo .p{stroke:var(--navy)} .logo .l{stroke:var(--accent)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;color:var(--on-dark);background:var(--navy-deep);display:grid;grid-template-rows:auto 1fr auto;padding:0 var(--m)}
+.hero .ph{position:absolute;inset:-4%}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;will-change:transform}
+.hero .scrim{position:absolute;inset:0;background:rgba(10,14,34,.42)}
+.topo{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;will-change:transform}
+.topo path{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:.6;vector-effect:non-scaling-stroke}
+.hero h1{perspective:900px;grid-row:1 / span 3;grid-column:1;display:grid;grid-template-rows:auto 1fr auto;position:relative;z-index:2;font-weight:inherit}
+.hero .ln{display:block;font:800 clamp(64px,12.4vw,240px)/.86 var(--display);letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;will-change:transform}
+.hero .ln1{grid-row:1;margin-top:clamp(96px,11vh,120px)}
+.hero .ln2{grid-row:3;justify-self:end;margin-bottom:clamp(30px,4.2vw,56px)}
+.hero .mid{grid-row:2;grid-column:1;align-self:center;position:relative;z-index:3;margin-left:30vw;max-width:46ch;background:var(--navy-deep);padding:28px 28px 30px}
+.hero .mid p{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);line-height:1.45;font-weight:500;margin-bottom:24px;text-wrap:pretty}
+.level{position:absolute;z-index:3;left:var(--m);top:52%;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500}
+.level .bar{width:120px;height:6px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.level .bar i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+.scroll-hint{position:absolute;z-index:3;right:var(--m);top:52%;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
+.scroll-hint i{width:14px;height:22px;border:2px solid var(--on-dark);border-radius:8px;position:relative}
+.scroll-hint i::after{content:"";position:absolute;left:50%;top:4px;width:2px;height:5px;margin-left:-1px;background:var(--accent);animation:wheel 1.6s var(--ease) infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}80%{transform:translateY(8px);opacity:0}100%{opacity:0}}
+
+/* ---------- MARQUEE ---------- */
+.marq{background:var(--accent);color:var(--ink);overflow:hidden;padding:22px 0;white-space:nowrap}
+.marq .track{display:inline-flex;will-change:transform}
+.marq span{font:800 clamp(44px,4.6vw,68px)/1 var(--display);letter-spacing:-.03em;text-transform:uppercase;padding-right:.6em;display:inline-flex;align-items:center;gap:.6em}
+.marq span svg{width:.7em;height:.7em;flex:none}
+
+/* ---------- COMUNS ---------- */
+section{position:relative}
+.h2{font:800 clamp(1.75rem,1.2rem + 1.6vw,2.5rem)/1.05 var(--display);letter-spacing:-.03em;text-transform:uppercase}
+.par{overflow:hidden}
+.par img{width:100%;height:116%;object-fit:cover;will-change:transform}
+
+/* ---------- SERVIÇOS ---------- */
+.servicos{padding:clamp(120px,18vh,200px) var(--m)}
+.servicos .grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:80px}
+.servicos .col:nth-child(1){grid-column:1 / span 3}
+.servicos .col:nth-child(2){grid-column:4 / span 3}
+.servicos .col:nth-child(3){grid-column:7 / span 3}
+.servicos h3{font:600 1.125rem/1.3 var(--text);margin-bottom:1.1em}
+.servicos ul{list-style:none;margin:0;padding:0}
+.servicos li button{all:unset;cursor:pointer;position:relative;display:flex;align-items:center;gap:0;font-size:17px;line-height:1.3;padding:.36em 0;color:var(--muted);transition:color .25s,gap .45s var(--ease)}
+.servicos li button::before{content:"";width:0;height:3px;background:var(--accent);transition:width .45s var(--ease)}
+.servicos li button:hover,.servicos li button:focus-visible,.servicos li button[aria-pressed=true]{color:var(--ink);gap:10px}
+.servicos li button:hover::before,.servicos li button:focus-visible::before,.servicos li button[aria-pressed=true]::before{width:18px}
+.servicos li button:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.servicos .sum{display:none;color:var(--muted);margin-top:14px;font-size:16px}
+.servicos .desc{grid-column:10 / span 3;grid-row:1;align-self:start;position:sticky;top:110px}
+.servicos .desc .pic{aspect-ratio:4/5;overflow:hidden;background:var(--ground-2);position:relative}
+.servicos .desc .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.servicos .desc p{margin-top:16px;font-size:17px;min-height:4.6em}
+.servicos .desc strong{display:block;font-weight:600}
+
+/* ---------- FROTA ---------- */
+.frota{background:var(--ground-2);display:grid;grid-template-columns:1fr 1fr;min-height:92svh}
+.frota .plate{padding:40px;display:flex;align-items:center;justify-content:center}
+.frota .plate .sq{position:relative;width:100%;aspect-ratio:1;overflow:hidden;background:var(--ink)}
+.frota .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frota .plate .tag{position:absolute;left:0;bottom:0;z-index:3;background:var(--accent);color:var(--ink);font:800 clamp(16px,1.4vw,20px)/1 var(--display);padding:14px 16px;letter-spacing:-.02em}
+.frota .side{display:flex;flex-direction:column;justify-content:space-between;padding:56px var(--m) 40px 24px;gap:36px}
+.tabs{position:relative;display:flex;flex-wrap:wrap;gap:6px 24px}
+.tabs button{all:unset;cursor:pointer;font:500 18px/1.3 var(--text);color:var(--muted);padding:6px 0 9px;transition:color .25s}
+.tabs button[aria-selected=true]{color:var(--ink);font-weight:600}
+.tabs button:hover{color:var(--ink)}
+.tabs button:focus-visible{outline:2px solid var(--navy);outline-offset:4px}
+.tabs .ind{position:absolute;left:0;top:0;height:3px;background:var(--accent);pointer-events:none;transition:transform .55s var(--ease),width .55s var(--ease)}
+.frota h2.h2{margin-bottom:22px}
+.frota .mtitle{font:800 clamp(1.75rem,1.2rem + 1.5vw,2.5rem)/1.05 var(--display);letter-spacing:-.03em}
+.frota .mdesc{margin-top:22px;max-width:40ch}
+.frota .specs{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:16px;max-width:46ch}
+.frota .specs dt{color:var(--muted)} .frota .specs dd{margin:0;font-weight:500}
+.builder{display:grid;gap:14px}
+.builder fieldset{border:0;margin:0;padding:0}
+.builder legend,.builder label.t{font-size:15px;color:var(--muted);margin-bottom:8px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{position:relative;overflow:hidden;isolation:isolate;cursor:pointer;background:var(--ground);color:var(--ink);font-size:16px;font-weight:500;padding:.6em .95em;transition:color .35s var(--ease),transform .3s var(--ease)}
+.chips label::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform .45s var(--ease)}
+.chips label:hover{transform:translateY(-2px)}
+.chips input:checked+label{color:var(--on-dark);background:var(--ink);transition:color .35s var(--ease),background-color 0s .4s}
+.chips input:checked+label::before{transform:none}
+.chips input:focus-visible+label{outline:2px solid var(--navy);outline-offset:2px}
+.builder input[type=text]{font:500 17px var(--text);width:100%;padding:.85em .95em;background:var(--ground);border:0;color:var(--ink)}
+.builder input[type=text]:focus{outline:3px solid var(--accent);outline-offset:-3px}
+.builder .msg{font-size:16px;background:var(--ground);padding:14px 16px;border-left:4px solid var(--accent);min-height:3.4em}
+.builder .msg .caret{display:inline-block;width:2px;height:1em;background:var(--ink);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cells{display:grid;grid-template-columns:1fr 1fr}
+.cells .btn{height:72px;justify-content:center;font-size:17px}
+
+/* ---------- OBRAS ---------- */
+.obras{background:var(--navy-deep);color:var(--on-dark)}
+.obras .ohead{position:absolute;top:28px;left:var(--m);z-index:4;background:var(--navy-deep);padding:10px 14px}
+.proj{height:135svh;position:relative}
+.proj .stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.pane{position:absolute;top:0;bottom:0;width:50%;overflow:hidden}
+.pane.l{left:0}.pane.r{right:0}
+.pane img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;will-change:transform}
+.pane::after{content:"";position:absolute;inset:0;background:rgba(10,14,34,.32)}
+.ptitle{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;z-index:2}
+.ptitle h3{position:relative;font:800 clamp(56px,10.4vw,160px)/.82 var(--display);letter-spacing:-.04em;text-transform:uppercase;text-align:center;white-space:nowrap}
+.ptitle h3 .a{display:block;clip-path:inset(0 50% 0 0);will-change:transform}
+.ptitle h3 .b{display:block;clip-path:inset(0 0 0 50%);position:absolute;inset:0;will-change:transform}
+.ptitle .cap{position:absolute;left:0;right:0;bottom:40px;z-index:3;text-align:center;font-size:16px;font-weight:500;pointer-events:auto}
+.ptitle .cap span{background:var(--navy-deep);padding:6px 10px}
+.ptitle .cap a{display:inline-flex;gap:8px;align-items:center;margin-top:10px;text-decoration:none;color:var(--accent);background:var(--navy-deep);padding:10px 12px;font-weight:600;transition:color .3s,background-color .3s}
+.ptitle .cap a:hover{background:var(--accent);color:var(--ink)}
+
+/* ---------- COMO FUNCIONA ---------- */
+.como{padding:clamp(120px,18vh,200px) var(--m) clamp(120px,16vh,180px)}
+.como .row{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.como figure{margin:0;background:var(--ground-2)}
+.como p{font-size:17px;max-width:36ch}
+.como p b{font-weight:600}
+.como .ra figure{grid-column:1 / span 4;aspect-ratio:3/4}
+.como .ra .t{grid-column:6 / span 7;align-self:start}
+.como .ra .t .h2{font-size:clamp(2rem,1.3rem + 2.6vw,3.75rem);display:block;margin-bottom:40px}
+.como .rb{margin-top:-120px}
+.como .rb figure{grid-column:6 / span 3;aspect-ratio:1}
+.como .rb p{grid-column:9 / span 4;align-self:start;padding-left:8px}
+.como .rc{margin-top:120px}
+.como .rc p{grid-column:1 / span 4;align-self:end;padding-bottom:8px}
+.como .rc figure{grid-column:6 / span 7;aspect-ratio:16/10}
+
+/* ---------- HISTÓRIA ---------- */
+.historia{padding:clamp(100px,14vh,160px) var(--m)}
+.historia .r1{display:grid;grid-template-columns:minmax(160px,1fr) 2fr;column-gap:24px}
+.facts{display:grid;gap:20px;align-content:start;font-size:15px;margin:0}
+.facts dt{color:var(--muted)} .facts dd{margin:2px 0 0;font-weight:600}
+.historia .big{font-size:clamp(1.25rem,1rem + 1vw,1.75rem);line-height:1.38;max-width:44ch}
+.historia .big+.big{margin-top:1em}
+.historia .r2{display:grid;grid-template-columns:minmax(160px,1fr) 1fr 1fr;column-gap:24px;margin-top:100px}
+.historia .r2 h3{font:600 16px/1.3 var(--text)}
+.historia .r2 h3.sub{margin-bottom:10px}
+.historia ul{list-style:none;padding:0;margin:0;font-size:16px}
+.historia li{display:flex;justify-content:space-between;gap:16px;padding:6px 0;transition:transform .4s var(--ease)}
+.historia li:hover{transform:translateX(6px)}
+.historia li span{color:var(--muted)}
+.historia .r3{display:grid;grid-template-columns:7fr 5fr;gap:24px;margin-top:100px;align-items:end}
+.historia figure{margin:0}
+.historia .r3 figure:first-child .par{aspect-ratio:4/3}
+.historia .r3 figure:last-child .par{aspect-ratio:4/5}
+.historia figcaption{font-size:15px;color:var(--muted);margin-top:12px}
+
+/* ---------- CONTATO ---------- */
+.contato{background:var(--navy);color:var(--on-dark);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto;row-gap:clamp(64px,14vh,140px);padding:clamp(56px,9vh,96px) var(--m) 36px;overflow:hidden}
+.contato .flat{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.contato .flat path{stroke:rgba(240,188,46,.3);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.contato h2{position:relative;font:500 clamp(1.25rem,1.1rem + .5vw,1.5rem)/1.35 var(--text);max-width:26ch}
+.contato .num{position:relative;align-self:end;justify-self:start;display:inline-block;text-decoration:none;font:800 clamp(36px,7.6vw,150px)/.95 var(--display);letter-spacing:-.04em;white-space:nowrap}
+.contato .num .dot{position:relative;display:inline-block;width:.16em;height:.16em;border-radius:50%;background:#4ADE80;vertical-align:.32em;margin-right:.18em}
+.contato .num .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#4ADE80;animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.7}to{transform:scale(2.6);opacity:0}}
+.contato .num .ch{display:inline-block;transition:transform .5s var(--ease),color .3s}
+.contato .num:hover .ch{color:var(--accent)}
+.contato .foot{position:relative;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px}
+.contato .foot a{position:relative;text-decoration:none;font-weight:600;transition:color .3s}
+.contato .foot a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.contato .foot a:hover{color:var(--accent)}
+.contato .foot a:hover::after{transform:scaleX(1);transform-origin:left}
+.contato .foot div{display:grid;gap:6px}
+
+/* ---------- RODAPÉ ---------- */
+footer{background:var(--navy-deep);color:var(--on-dark);padding:clamp(64px,10vh,110px) var(--m) 32px;overflow:hidden}
+footer .row{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+footer .places{grid-column:1 / span 6;list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer .places a{font:500 clamp(1.5rem,1.1rem + 1.2vw,2.125rem)/1.2 var(--text);color:var(--accent);text-decoration:none;display:inline-block;transition:transform .45s var(--ease)}
+footer .places a:hover{transform:translateX(10px)}
+footer .links{grid-column:8 / span 5;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;font-size:15px;align-content:start}
+footer .links a{text-decoration:none;color:var(--on-dark-muted);transition:color .3s}
+footer .links a:hover{color:var(--on-dark)}
+footer .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:80px;font-size:14px;color:var(--on-dark-muted)}
+footer .legal a{color:var(--on-dark-muted)}
+footer .name{font:800 clamp(56px,16.6vw,300px)/.8 var(--display);letter-spacing:-.05em;text-transform:uppercase;margin:72px 0 -0.12em;white-space:nowrap;cursor:default}
+footer .name .ch{display:inline-block;transition:transform .6s var(--ease),color .3s}
+footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
+
+/* ---------- WHATSAPP FLUTUANTE ---------- */
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;display:grid;place-items:center;background:var(--accent);color:var(--ink);transform:translateY(130px);transition:transform .6s var(--ease)}
+.wa.on{transform:none}
+.wa svg{width:28px;height:28px;transition:transform .5s var(--ease)}
+.wa:hover svg{transform:rotate(-12deg) scale(1.1)}
+.wa::after{content:"";position:absolute;inset:0;border:2px solid var(--accent);animation:ring 2.4s var(--ease) infinite}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.6);opacity:0}}
+
+/* ---------- CELULAR ---------- */
+@media (max-width:860px){
+  .nav .lk{display:none}
+  .nav .mark b{display:none}
+  .hero .ln{font-size:13.2vw}
+  .hero .mid{margin-left:0}
+  .hero .ph img{object-position:30% 80%}
+  .level{top:auto;bottom:calc(13.2vw + 56px)}
+  .scroll-hint{display:none}
+  .servicos .grid{grid-template-columns:1fr;row-gap:40px;margin-top:48px}
+  .servicos .col:nth-child(n){grid-column:1}
+  .servicos li button{font-size:18px;line-height:1.4}
+  .servicos .sum{display:block}
+  .servicos .desc{display:none}
+  .frota{grid-template-columns:1fr}
+  .frota .plate{padding:16px 16px 0}
+  .frota .side{padding:28px 16px 40px}
+  .cells{grid-template-columns:1fr}
+  .cells .btn{height:60px}
+  .ptitle h3{font-size:11vw}
+  .ptitle .cap{bottom:28px;padding:0 16px}
+  .como .row{display:block}
+  .como .rb,.como .rc{margin-top:0}
+  .como .ra .t .h2{margin:32px 0 20px}
+  .como figure{margin-bottom:16px}
+  .como .rb figure{width:62%;margin-left:auto}
+  .como .rc figure{width:78%}
+  .como .rb p{width:62%;margin-left:auto;padding:0}
+  .como p{margin-bottom:56px}
+  .como .rc{display:flex!important;flex-direction:column-reverse}
+  .historia .r1,.historia .r2,.historia .r3{grid-template-columns:1fr;row-gap:40px}
+  .facts{grid-template-columns:1fr 1fr;order:2}
+  .historia .r2,.historia .r3{margin-top:56px}
+  .contato .num{font-size:12.4vw}
+  .contato .foot{flex-direction:column}
+  .contato .foot div[style]{text-align:left!important}
+  footer .places,footer .links{grid-column:1 / -1}
+  footer .links{margin-top:40px}
+  footer .name{font-size:17vw}
+}
+@media (max-width:860px){.como p{max-width:none}.como .rb p{max-width:none}}
+@media (min-width:600px) and (max-width:860px){.historia .r3{grid-template-columns:1fr 1fr!important}.como .ra{display:grid!important;grid-template-columns:1fr 1fr;column-gap:24px}.como .ra .t .h2{margin-top:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#servicos">Pular para o conteúdo</a>
+<div class="cur" id="cur" aria-hidden="true"><span></span></div>
+
+<nav class="nav" id="nav" aria-label="Principal">
+  <a class="mark" href="#topo" aria-label="Pinheiro Locações, início"><span class="logo-chip"><svg class="logo" viewBox="0 0 150 150" aria-hidden="true"><path class="p" pathLength="1" d="M35 106V47l41-24 42 24v26L77 96"/><path class="l" pathLength="1" d="M53 49v60l23 13 42-24V84"/></svg></span><b>Pinheiro Locações</b></a>
+  <a class="lk" href="#servicos"><span>Serviços</span><span aria-hidden="true">Serviços</span></a>
+  <a class="lk" href="#frota"><span>Frota</span><span aria-hidden="true">Frota</span></a>
+  <a class="lk" href="#obras"><span>Obras</span><span aria-hidden="true">Obras</span></a>
+  <a class="lk" href="#contato"><span>Contato</span><span aria-hidden="true">Contato</span></a>
+  <a class="btn mag" href="#frota">Orçamento <span class="arr" aria-hidden="true"><i>→</i><i>→</i></span></a>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="ph"><picture>
+    <source media="(max-width:860px)" srcset="img/hero-m.webp">
+    <img id="hero-img" src="img/hero.webp" width="2000" height="1240" alt="Escavadeira New Holland E145C EVO da Pinheiro Locações em área de plantio, com eucaliptos ao fundo">
+  </picture></div>
+  <div class="scrim"></div>
+  <svg class="topo" id="topo-lines" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <h1>
+    <span class="ln ln1">Pinheiro</span>
+    <span class="ln ln2">Locações</span>
+  </h1>
+  <div class="mid" id="hero-mid">
+    <p>Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Da obra na cidade à fazenda.</p>
+    <a class="btn mag" data-cursor="WhatsApp" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+      Pedir orçamento no WhatsApp</a>
+  </div>
+  <div class="level" aria-hidden="true"><span id="lvl-t">Terreno bruto</span><span class="bar"><i id="lvl"></i></span></div>
+  <div class="scroll-hint" aria-hidden="true">Role para nivelar <i></i></div>
+</header>
+
+<div class="marq" aria-hidden="true"><div class="track" id="marq">
+  <span>Terraplenagem <svg viewBox="0 0 150 150"><path d="M35 106V47l41-24 42 24v26L77 96" fill="none" stroke="#253982" stroke-width="18"/></svg></span><span>Locação de máquinas <svg viewBox="0 0 150 150"><path d="M35 106V47l41-24 42 24v26L77 96" fill="none" stroke="#253982" stroke-width="18"/></svg></span><span>Caminhão prancha <svg viewBox="0 0 150 150"><path d="M35 106V47l41-24 42 24v26L77 96" fill="none" stroke="#253982" stroke-width="18"/></svg></span><span>Munck <svg viewBox="0 0 150 150"><path d="M35 106V47l41-24 42 24v26L77 96" fill="none" stroke="#253982" stroke-width="18"/></svg></span><span>Cidade e campo <svg viewBox="0 0 150 150"><path d="M35 106V47l41-24 42 24v26L77 96" fill="none" stroke="#253982" stroke-width="18"/></svg></span>
+</div></div>
+
+<main>
+<section class="servicos" id="servicos" aria-labelledby="s-h">
+  <h2 class="h2 split" id="s-h">O que a gente faz</h2>
+  <div class="grid">
+    <div class="col rv">
+      <h3>Na cidade</h3>
+      <ul>
+        <li><button type="button" data-img="loteamento" data-d="Corte, aterro e nivelamento de lotes, ruas e loteamentos inteiros.">Terraplenagem de loteamentos</button></li>
+        <li><button type="button" data-img="urbano_rua" data-d="Escavação de valas, redes e fundações no meio da cidade, com cuidado com o entorno.">Valas, redes e fundações</button></li>
+        <li><button type="button" data-img="drenagem" data-d="Abertura de vala e assentamento de tubulação para escoamento de água.">Drenagem pluvial</button></li>
+        <li><button type="button" data-img="komatsu" data-d="Recuperação de vias de acesso e abertura de novas ruas.">Abertura e recuperação de vias</button></li>
+        <li><button type="button" data-img="base" data-d="Preparo de terreno para condomínios e empreendimentos residenciais.">Condomínios e empreendimentos</button></li>
+        <li><button type="button" data-img="noite" data-d="Demolição executada com técnica, segurança e responsabilidade.">Demolição</button></li>
+        <li><button type="button" data-img="nh_escavando" data-d="Retirada de vegetação, entulho e regularização do terreno antes da obra.">Limpeza de terreno</button></li>
+      </ul>
+      <p class="sum">Lote, rua, rede e condomínio: a obra urbana do começo ao acabamento.</p>
+    </div>
+    <div class="col rv">
+      <h3>No campo</h3>
+      <ul>
+        <li><button type="button" data-img="area_aerea" data-d="Área preparada e nivelada para o plantio, inclusive em relevo montanhoso.">Preparo de área para plantio</button></li>
+        <li><button type="button" data-img="barragem" data-d="Barragens executadas com planejamento, para segurança hídrica da propriedade.">Barragens</button></li>
+        <li><button type="button" data-img="fazenda" data-d="Escavação de reservatórios, como o de 2 milhões de litros já entregue.">Reservatórios de água</button></li>
+        <li><button type="button" data-img="irrigacao" data-d="Valas e canais com nivelamento para o sistema de irrigação funcionar bem.">Canais e irrigação</button></li>
+        <li><button type="button" data-img="encosta" data-d="Retirada de tocos de eucalipto e preparo da área para o próximo ciclo.">Destoca de eucalipto</button></li>
+        <li><button type="button" data-img="santarita" data-d="Abertura e manutenção de estradas internas e acessos da fazenda.">Estradas e acessos</button></li>
+      </ul>
+      <p class="sum">Do terreno bruto à área pronta: plantio, água e acesso para a fazenda.</p>
+    </div>
+    <div class="col rv">
+      <h3>Na estrada</h3>
+      <ul>
+        <li><button type="button" data-img="prancha" data-d="Transporte da sua máquina com caminhão prancha, com segurança, para todo o Brasil.">Caminhão prancha</button></li>
+        <li><button type="button" data-img="munck" data-d="Içamento de cargas e apoio a serviços públicos, como poda de árvores.">Caminhão Munck</button></li>
+        <li><button type="button" data-img="historia" data-d="Mobilização de máquinas e caçambas para a sua obra no dia combinado.">Mobilização de equipamentos</button></li>
+        <li><button type="button" data-img="munck" data-d="Poda de árvores com Munck, em conjunto com prefeitura e Meio Ambiente.">Poda com Munck</button></li>
+        <li><button type="button" data-img="jcb20" data-d="Revisões preventivas em dia antes de cada mobilização.">Manutenção preventiva</button></li>
+      </ul>
+      <p class="sum">A máquina chega até você: prancha, Munck e mobilização com segurança.</p>
+    </div>
+    <div class="desc" aria-live="polite">
+      <div class="pic" id="s-pic"><img src="img/loteamento.webp" width="720" height="1280" alt="Terraplenagem de loteamentos"></div>
+      <p id="s-desc"><strong>Terraplenagem de loteamentos</strong>Corte, aterro e nivelamento de lotes, ruas e loteamentos inteiros.</p>
+    </div>
+  </div>
+</section>
+
+<section class="frota" id="frota" aria-labelledby="f-h">
+  <div class="plate"><div class="sq" id="f-sq" data-cursor="Frota"><img src="img/nh_escavando.webp" width="900" height="1600" alt="Escavadeira hidráulica New Holland escavando"><span class="tag" id="f-tag">13 a 35 t</span></div></div>
+  <div class="side">
+    <div>
+      <h2 class="h2 split" id="f-h">Frota</h2>
+      <div class="tabs" role="tablist" aria-label="Máquinas">
+        <button role="tab" aria-selected="true" data-k="0">Escavadeiras</button>
+        <button role="tab" aria-selected="false" data-k="1" tabindex="-1">Pá carregadeira</button>
+        <button role="tab" aria-selected="false" data-k="2" tabindex="-1">Retroescavadeira</button>
+        <button role="tab" aria-selected="false" data-k="3" tabindex="-1">Prancha</button>
+        <button role="tab" aria-selected="false" data-k="4" tabindex="-1">Munck</button>
+        <span class="ind" id="ind"></span>
+      </div>
+    </div>
+    <div role="tabpanel" id="panel" aria-live="polite">
+      <h3 class="mtitle" id="m-t">Escavadeira hidráulica</h3>
+      <p class="mdesc" id="m-d">Para escavação pesada, valas, barragens, reservatórios, destoca e carregamento de caminhões.</p>
+      <dl class="specs" id="m-s"></dl>
+    </div>
+    <form class="builder" id="builder" novalidate>
+      <fieldset>
+        <legend>Por quanto tempo?</legend>
+        <div class="chips">
+          <input type="radio" name="per" id="p1" value="por diária"><label for="p1">Diária</label>
+          <input type="radio" name="per" id="p2" value="por semana" checked><label for="p2">Semana</label>
+          <input type="radio" name="per" id="p3" value="por mês"><label for="p3">Mês</label>
+          <input type="radio" name="per" id="p4" value="por empreitada (serviço fechado)"><label for="p4">Serviço fechado</label>
+        </div>
+      </fieldset>
+      <div><label class="t" for="city">Cidade da obra</label><input type="text" id="city" placeholder="Ex.: Teixeira de Freitas" autocomplete="address-level2"></div>
+      <p class="msg" id="msg" aria-live="polite"></p>
+      <div class="cells">
+        <a class="btn" id="go" href="https://wa.me/5573998402367" target="_blank" rel="noopener noreferrer">Pedir orçamento desta máquina</a>
+        <button class="btn dark" type="button" id="next">Próxima máquina <span class="arr" aria-hidden="true"><i>→</i><i>→</i></span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="obras" id="obras" aria-labelledby="o-h">
+  <article class="proj"><div class="stage">
+    <h2 class="h2 ohead" id="o-h">Obras</h2>
+    <div class="pane l"><img src="img/barragem.webp" width="640" height="1136" alt="Vista aérea da barragem finalizada em meio à mata" loading="lazy"></div>
+    <div class="pane r"><img src="img/fazenda.webp" width="1250" height="1600" alt="Escavadeira abrindo reservatório em terra vermelha" loading="lazy"></div>
+    <div class="ptitle"><h3><span class="a">Barragem</span><span class="b" aria-hidden="true">Barragem</span></h3>
+      <p class="cap"><span>Barragem e reservatório · Rural · 2026</span><br><a href="https://www.instagram.com/p/DVJtmu7EREr/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
+  </div></article>
+  <article class="proj"><div class="stage">
+    <div class="pane l"><img src="img/santarita.webp" width="720" height="1280" alt="Área montanhosa terraplenada vista de cima em Santa Rita do Planalto" loading="lazy"></div>
+    <div class="pane r"><img src="img/encosta.webp" width="720" height="1024" alt="Escavadeira trabalhando em encosta íngreme" loading="lazy"></div>
+    <div class="ptitle"><h3><span class="a">Encosta</span><span class="b" aria-hidden="true">Encosta</span></h3>
+      <p class="cap"><span>Relevo montanhoso · Santa Rita do Planalto · 2026</span><br><a href="https://www.instagram.com/p/DcttlXiRmGk/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
+  </div></article>
+  <article class="proj"><div class="stage">
+    <div class="pane l"><img src="img/area_aerea.webp" width="900" height="506" alt="Vista aérea de grande área preparada para plantio" loading="lazy"></div>
+    <div class="pane r"><img src="img/irrigacao.webp" width="640" height="568" alt="Escavadeira abrindo vala para irrigação em pasto" loading="lazy"></div>
+    <div class="ptitle"><h3><span class="a">Plantio</span><span class="b" aria-hidden="true">Plantio</span></h3>
+      <p class="cap"><span>Preparo de área e irrigação · Rural · 2026</span><br><a href="https://www.instagram.com/p/DcEQ2egEZ1z/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
+  </div></article>
+  <article class="proj"><div class="stage">
+    <div class="pane l"><img src="img/loteamento.webp" width="720" height="1280" alt="Loteamento com ruas e rotatória sendo terraplenado, visto de cima" loading="lazy"></div>
+    <div class="pane r"><img src="img/komatsu.webp" width="900" height="1600" alt="Escavadeira Komatsu PC130 em obra ao entardecer" loading="lazy"></div>
+    <div class="ptitle"><h3><span class="a">Lotes</span><span class="b" aria-hidden="true">Lotes</span></h3>
+      <p class="cap"><span>Terraplenagem de loteamento · Urbano · 2026</span><br><a href="https://www.instagram.com/p/De_yMHTRA3-/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
+  </div></article>
+  <article class="proj"><div class="stage">
+    <div class="pane l"><img src="img/drenagem.webp" width="720" height="1280" alt="Equipe instalando tubulação de drenagem em vala aberta na rua" loading="lazy"></div>
+    <div class="pane r"><img src="img/urbano_rua.webp" width="720" height="1280" alt="Escavadeira trabalhando em rua da cidade em frente ao comércio" loading="lazy"></div>
+    <div class="ptitle"><h3><span class="a">Drenagem</span><span class="b" aria-hidden="true">Drenagem</span></h3>
+      <p class="cap"><span>Drenagem e redes em via urbana · 2026</span><br><a href="https://www.instagram.com/p/DclyfXTRLPS/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
+  </div></article>
+</section>
+
+<section class="como" id="como" aria-labelledby="c-h">
+  <div class="row ra">
+    <figure class="par clip" data-cursor="Ver"><img src="img/equipe.webp" width="1330" height="1600" alt="Equipe da Pinheiro Locações em frente a uma escavadeira na obra" loading="lazy"></figure>
+    <div class="t"><h2 class="h2 split" id="c-h">Como funciona a locação</h2>
+      <p class="rv"><b>Primeiro, a conversa.</b> Você chama no WhatsApp, conta o que precisa, onde é e o prazo. Se for preciso, a gente vai até o local ver o terreno antes de fechar.</p></div>
+  </div>
+  <div class="row rb">
+    <figure class="par clip" data-cursor="Ver"><img src="img/prancha.webp" width="1200" height="1600" alt="Caminhão prancha da Pinheiro transportando máquina na estrada" loading="lazy"></figure>
+    <p class="rv"><b>Depois, a mobilização.</b> A máquina sai da nossa base com a revisão preventiva em dia e chega à obra no nosso caminhão prancha, no dia combinado.</p>
+  </div>
+  <div class="row rc">
+    <p class="rv"><b>Por fim, o serviço.</b> Operador experiente no comando e acompanhamento de perto, do nascer ao pôr do sol, até o terreno ficar do jeito que o projeto pede.</p>
+    <figure class="par clip" data-cursor="Ver"><img src="img/por_do_sol.webp" width="1141" height="1356" alt="Escavadeira New Holland trabalhando ao pôr do sol" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="historia" id="historia" aria-labelledby="h-h">
+  <h2 class="h2 split" id="h-h" style="margin-bottom:56px">Quem somos</h2>
+  <div class="r1">
+    <dl class="facts rv">
+      <div><dt>Base</dt><dd>BR-101, nº 336, Teixeira de Freitas (BA)</dd></div>
+      <div><dt>Atendimento</dt><dd>Extremo Sul da Bahia; prancha para todo o Brasil</dd></div>
+      <div><dt>Frente</dt><dd>Obras urbanas e rurais</dd></div>
+    </dl>
+    <div>
+      <p class="big words">Tudo começou com um sonho, muita coragem e vontade de vencer. Vieram erros, desafios e muitos aprendizados, e cada conquista virou máquina nova na frota.</p>
+      <p class="big words">Hoje a Pinheiro Locações atende a cidade e o campo com escavadeiras, pá carregadeira, retro, patrol, pranchas e Munck. Com trabalho sério, e com a certeza de que até aqui nos ajudou o Senhor.</p>
+    </div>
+  </div>
+  <div class="r2">
+    <h3 class="rv">Por onde passamos</h3>
+    <div class="rv"><h3 class="sub">Frota</h3>
+      <ul><li>New Holland E145C EVO <span>escavadeira</span></li><li>Komatsu PC130 <span>escavadeira</span></li><li>JCB JS130LC <span>escavadeira</span></li><li>XCMG LW300KV <span>pá carregadeira</span></li><li>JCB 3CX <span>retroescavadeira</span></li><li>John Deere <span>escavadeira</span></li></ul></div>
+    <div class="rv"><h3 class="sub">Lugares</h3>
+      <ul><li>Teixeira de Freitas <span>base</span></li><li>Medeiros Neto <span>usina</span></li><li>Santa Rita do Planalto <span>área rural</span></li><li>Caraíva <span>transporte</span></li><li>Condomínio Outeiro da Barra <span>urbano</span></li><li>Golden Imperial Epic <span>urbano</span></li></ul></div>
+  </div>
+  <div class="r3">
+    <figure><div class="par clip" data-cursor="Ver"><img src="img/bamaq.webp" width="900" height="1600" alt="Entrega da escavadeira New Holland na concessionária BAMAQ" loading="lazy" style="object-position:50% 40%"></div><figcaption>Entrega da New Holland E145C EVO na BAMAQ.</figcaption></figure>
+    <figure><div class="par clip" data-cursor="Ver"><img src="img/xcmg_fabrica.webp" width="1200" height="1600" alt="Davi Pinheiro na fábrica da XCMG, entre escavadeiras novas" loading="lazy"></div><figcaption>Davi Pinheiro na fábrica da XCMG no Brasil.</figcaption></figure>
+  </div>
+</section>
+
+<section class="contato" id="contato" aria-labelledby="ct-h">
+  <svg class="flat" id="flat" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <h2 id="ct-h" class="rv">Terreno nivelado. Agora conte a obra, a cidade e o prazo: a gente responde no WhatsApp.</h2>
+  <a class="num mag" id="num" data-cursor="Chamar" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367"><span class="dot" aria-hidden="true"></span><span class="t">(73) 99840-2367</span></a>
+  <div class="foot rv">
+    <div><span>Davi Pinheiro: <a href="https://wa.me/5573999327388">(73) 99932-7388</a></span><span>BR-101, nº 336, próximo à Plena Auto Peças · Teixeira de Freitas, BA</span></div>
+    <div style="text-align:right"><a href="https://www.instagram.com/pinheiro.locacoes/" target="_blank" rel="noopener noreferrer">Instagram @pinheiro.locacoes</a><a href="https://www.google.com/maps/search/?api=1&query=BR-101%20336%20Teixeira%20de%20Freitas%20BA" target="_blank" rel="noopener noreferrer">Abrir a base no mapa</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="row">
+    <ul class="places">
+      <li><a data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367">WhatsApp (73) 99840-2367</a></li>
+      <li><a href="https://www.instagram.com/pinheiro.locacoes/" target="_blank" rel="noopener noreferrer">@pinheiro.locacoes</a></li>
+      <li><a href="https://www.google.com/maps/search/?api=1&query=BR-101%20336%20Teixeira%20de%20Freitas%20BA" target="_blank" rel="noopener noreferrer">BR-101, nº 336 · Teixeira de Freitas</a></li>
+    </ul>
+    <nav class="links" aria-label="Rodapé">
+      <a href="#servicos">Serviços</a><a href="#frota">Frota</a>
+      <a href="#obras">Obras</a><a href="#como">Como funciona</a>
+      <a href="#historia">Quem somos</a><a href="#contato">Contato</a>
+    </nav>
+  </div>
+  <div class="legal"><span>© 2026 Pinheiro Locações · Construindo o futuro, uma obra de cada vez.</span><a href="#topo">Voltar ao topo ↑</a></div>
+  <p class="name" id="fname" aria-hidden="true">Pinheiro</p>
+</footer>
+
+<a class="wa" id="wa" data-cursor="WhatsApp" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+</a>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+(()=>{
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(pointer:fine)').matches;
+const G=!!(window.gsap&&window.ScrollTrigger);
+const WA='5573998402367', wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener noreferrer'});
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+if(G){gsap.registerPlugin(ScrollTrigger); if(window.SplitText) gsap.registerPlugin(SplitText);}
+
+/* ---------- rolagem suave ---------- */
+let lenis=null;
+if(G&&!reduce&&window.Lenis){
+  lenis=new Lenis({lerp:.09,wheelMultiplier:1,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+}
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');const el=id==='#topo'?document.body:$(id);if(!el)return;e.preventDefault();
+  if(lenis)lenis.scrollTo(id==='#topo'?0:el,{duration:1.6,easing:t=>1-Math.pow(1-t,4)});else el.scrollIntoView({behavior:reduce?'auto':'smooth'});}));
+
+/* ---------- logo: P e L desenhados como trilha de escavação ---------- */
+if(!reduce)$$('.nav .logo path').forEach((p,i)=>{p.style.strokeDasharray=1;p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:1300,delay:250+i*450,easing:'cubic-bezier(.65,0,.35,1)',fill:'both'})});
+
+/* ---------- curvas de nível vivas que se nivelam com a rolagem ---------- */
+function contours(svg,n,base){
+  const W=1000,H=1000;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const seeds=[...Array(n)].map((_,i)=>({y:(i+1)*H/(n+1),a:[Math.random()*6,Math.random()*6,Math.random()*6],k:.6+Math.random()*.8,s:.4+Math.random()*.5}));
+  const paths=seeds.map(()=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');svg.appendChild(p);return p});
+  return (amp,t,wob)=>{seeds.forEach((s,i)=>{let d='';for(let x=0;x<=W;x+=20){const u=x/W;
+    const hill=Math.exp(-Math.pow((u-.68)/.22,2))*140+Math.exp(-Math.pow((u-.18)/.16,2))*90;
+    const w=26*Math.sin(u*7+s.a[0]+t*s.s)+14*Math.sin(u*15+s.a[1]-t*s.s*.8)+8*Math.sin(u*29+s.a[2]+t*.6);
+    const y=s.y-amp*(hill*s.k*(1-i/(n*1.4))+w)-(wob||0)*Math.sin(u*6+t+i*.4)*4;
+    d+=(x?'L':'M')+x+' '+y.toFixed(1)}paths[i].setAttribute('d',d)})};
+}
+const drawHero=contours($('#topo-lines'),15), drawFlat=contours($('#flat'),22);
+const hero=$('.hero'),lvl=$('#lvl'),lvlT=$('#lvl-t');
+let heroP=0;
+function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.8)));lvl.style.transform=`scaleX(${heroP})`;lvlT.textContent=heroP>.98?'Terreno nivelado':'Terreno bruto'}
+let t0=performance.now();
+function frame(now){const t=reduce?0:(now-t0)/1000;
+  if(scrollY<hero.offsetHeight*1.1)drawHero(1-heroP,t);
+  const c=$('#contato').getBoundingClientRect(); if(c.top<innerHeight&&c.bottom>0)drawFlat(0,t,reduce?0:1);
+  if(!reduce)requestAnimationFrame(frame)}
+heroProg(); requestAnimationFrame(frame); if(reduce){drawHero(.6,0);drawFlat(0,0,0)}
+addEventListener('scroll',heroProg,{passive:true});
+
+/* ---------- nav: sólida depois do topo, some ao descer ---------- */
+const nav=$('#nav'),waBtn=$('#wa');let lastY=0;
+function navTick(){const y=scrollY;nav.classList.toggle('solid',y>innerHeight*.7);
+  nav.classList.toggle('hide',y>innerHeight&&y>lastY+2);if(y<lastY-2)nav.classList.remove('hide');lastY=y;
+  waBtn.classList.toggle('on',y>innerHeight*.9)}
+addEventListener('scroll',navTick,{passive:true});navTick();
+
+/* ---------- cursor ---------- */
+const cur=$('#cur'),curL=cur.querySelector('span');
+if(fine&&!reduce){let mx=-100,my=-100,cx=mx,cy=my;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.classList.add('on')},{passive:true});
+  document.addEventListener('mouseleave',()=>cur.classList.remove('on'));
+  (function loop(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cur.style.transform=cur.className.includes('label')?`translate(${cx}px,${cy}px) scale(2.1)`:cur.className.includes('big')?`translate(${cx}px,${cy}px) scale(1)`:`translate(${cx}px,${cy}px) scale(.25)`;requestAnimationFrame(loop)})();
+  document.addEventListener('mouseover',e=>{const l=e.target.closest('[data-cursor]');const a=e.target.closest('a,button,label,input');
+    cur.classList.toggle('label',!!l);curL.textContent=l?l.dataset.cursor:'';cur.classList.toggle('big',!l&&!!a)});
+}
+
+/* ---------- botões magnéticos ---------- */
+if(fine&&!reduce)$$('.mag').forEach(el=>{const s=el.classList.contains('num')?.12:.32;
+  el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;el.style.transition='transform .2s';el.style.transform=`translate(${x*s}px,${y*s}px)`});
+  el.addEventListener('mouseleave',()=>{el.style.transition='transform .8s cubic-bezier(.16,1,.3,1)';el.style.transform=''})});
+
+/* ---------- serviços: troca de foto com cortina ---------- */
+const sPic=$('#s-pic'),sDesc=$('#s-desc');let sCur='loteamento';
+$$('.servicos li button').forEach(b=>{const show=()=>{
+  $$('.servicos li button[aria-pressed=true]').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+  const st=document.createElement('strong');st.textContent=b.textContent;sDesc.replaceChildren(st,document.createTextNode(b.dataset.d));
+  if(sCur===b.dataset.img)return;sCur=b.dataset.img;
+  const im=new Image();im.src='img/'+sCur+'.webp';im.alt=b.textContent;sPic.appendChild(im);
+  if(G&&!reduce){gsap.fromTo(im,{clipPath:'inset(100% 0 0 0)',scale:1.15},{clipPath:'inset(0% 0 0 0)',scale:1,duration:.8,ease:'expo.out',onComplete:()=>{while(sPic.children.length>1)sPic.firstChild.remove()}})}
+  else{while(sPic.children.length>1)sPic.firstChild.remove()}};
+  b.addEventListener('mouseenter',show);b.addEventListener('focus',show);b.addEventListener('click',show)});
+
+/* ---------- frota ---------- */
+const M=[
+ {t:'Escavadeira hidráulica',tag:'13 a 35 t',img:'nh_escavando',alt:'Escavadeira hidráulica New Holland escavando',d:'Para escavação pesada, valas, barragens, reservatórios, destoca e carregamento de caminhões.',s:[['Modelos','New Holland E145C EVO, Komatsu PC130, JCB JS130LC'],['Porte','de 13 a 35 toneladas'],['Com','operador experiente']],q:'escavadeira hidráulica'},
+ {t:'Pá carregadeira',tag:'XCMG',img:'pa_carregadeira',alt:'Pá carregadeira XCMG com garfo em área de destoca',d:'Movimenta e carrega material com agilidade. Com garfo, faz a limpeza e a destoca da área.',s:[['Modelo','XCMG LW300KV'],['Uso','carregamento, pátio, destoca'],['Com','operador experiente']],q:'pá carregadeira'},
+ {t:'Retroescavadeira',tag:'JCB 3CX',img:'retro',alt:'Retroescavadeira JCB 3CX amarela',d:'A máquina das obras urbanas: valas, ligações, limpeza de terreno e serviços de menor porte.',s:[['Modelo','JCB 3CX'],['Uso','valas, redes, limpeza'],['Com','operador experiente']],q:'retroescavadeira'},
+ {t:'Caminhão prancha',tag:'Todo o Brasil',img:'prancha',alt:'Caminhão prancha da Pinheiro transportando pá carregadeira',d:'Leva a sua máquina com segurança aonde ela precisar ir, no Extremo Sul da Bahia ou em qualquer estado.',s:[['Carga','máquinas pesadas e tratores'],['Alcance','todo o Brasil'],['Com','motorista da casa']],q:'caminhão prancha (transporte de máquina)'},
+ {t:'Caminhão Munck',tag:'Içamento',img:'munck',alt:'Caminhão Munck da Pinheiro em serviço na avenida',d:'Içamento e movimentação de cargas, apoio a serviços públicos e poda de árvores.',s:[['Uso','içamento, cargas, poda'],['Já atendeu','Prefeitura de Teixeira de Freitas'],['Com','operador da casa']],q:'caminhão Munck'}];
+let cur_=0;const tabs=$$('.tabs button'),ind=$('#ind'),sq=$('#f-sq'),tag=$('#f-tag'),city=$('#city'),msg=$('#msg'),go=$('#go');
+function placeInd(){const b=tabs[cur_];ind.style.width=b.offsetWidth+'px';ind.style.transform=`translate(${b.offsetLeft}px,${b.offsetTop+b.offsetHeight-3}px)`}
+let typeT=null;
+function compose(animate){const per=$('input[name=per]:checked').value;const c=city.value.trim();
+  const t=`Olá, Pinheiro Locações! Quero orçamento de ${M[cur_].q} ${per}${c?' em '+c:''}.`;go.href=wa(t);
+  clearInterval(typeT);if(!animate||reduce){msg.textContent='“'+t+'”';return}
+  let i=0;const full='“'+t+'”';const caret=document.createElement('span');caret.className='caret';typeT=setInterval(()=>{i+=3;msg.textContent=full.slice(0,i);msg.appendChild(caret);if(i>=full.length){clearInterval(typeT);msg.textContent=full}},16)}
+function setM(k,focus,first){const dir=k>cur_?1:-1;cur_=k;const m=M[k];
+  tabs.forEach((b,i)=>{b.setAttribute('aria-selected',i===k);b.tabIndex=i===k?0:-1});if(focus)tabs[k].focus();placeInd();
+  $('#m-t').textContent=m.t;$('#m-d').textContent=m.d;$('#m-s').replaceChildren(...m.s.flatMap(([a,b])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=a;dd.textContent=b;return[dt,dd]}));tag.textContent=m.tag;
+  if(!first){const im=new Image();im.src='img/'+m.img+'.webp';im.alt=m.alt;sq.insertBefore(im,tag);
+    if(G&&!reduce){gsap.fromTo(im,{clipPath:dir>0?'inset(0 0 0 100%)':'inset(0 100% 0 0)',scale:1.2},{clipPath:'inset(0 0% 0 0%)',scale:1,duration:1,ease:'expo.out',onComplete:()=>{sq.querySelectorAll('img').forEach((x,i,a)=>{if(i<a.length-1)x.remove()})}});
+      gsap.fromTo(['#m-t','#m-d','#m-s'],{y:24,opacity:0},{y:0,opacity:1,duration:.7,stagger:.07,ease:'expo.out'});
+      gsap.fromTo(tag,{yPercent:100},{yPercent:0,duration:.6,ease:'expo.out'})}
+    else sq.querySelectorAll('img').forEach((x,i,a)=>{if(i<a.length-1)x.remove()})}
+  compose(!first)}
+tabs.forEach((b,i)=>{b.addEventListener('click',()=>setM(i));b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();setM((cur_+(e.key==='ArrowRight'?1:M.length-1))%M.length,true)}})});
+$('#next').addEventListener('click',()=>setM((cur_+1)%M.length));
+$$('input[name=per]').forEach(r=>r.addEventListener('change',()=>compose(true)));city.addEventListener('input',()=>compose(false));
+$('#builder').addEventListener('submit',e=>e.preventDefault());
+setM(0,false,true);addEventListener('resize',placeInd);document.fonts&&document.fonts.ready.then(placeInd);
+
+/* ---------- caracteres do número e do nome do rodapé ---------- */
+function chars(el){const t=el.textContent;el.textContent='';[...t].forEach((c,i)=>{const s=document.createElement('span');s.className='ch';s.textContent=c===' '?' ':c;s.style.transitionDelay=(i*18)+'ms';el.appendChild(s)})}
+chars($('#num .t'));chars($('#fname'));
+
+if(!G||reduce)return;
+
+/* ---------- ENTRADA DO TOPO ---------- */
+const lines=$$('.hero .ln');
+if(window.SplitText){
+  lines.forEach((ln,li)=>{const sp=new SplitText(ln,{type:'chars'});gsap.from(sp.chars,{yPercent:70,rotationX:-80,opacity:0,transformOrigin:'50% 100% -40px',duration:.8,ease:'expo.out',stagger:.025,delay:.05+li*.1})});
+}
+gsap.from('#hero-mid',{y:30,opacity:.25,duration:.9,ease:'expo.out',delay:.35});
+gsap.from(['.level','.scroll-hint'],{opacity:0,duration:.8,delay:.9});
+gsap.from('#nav > *',{y:-20,opacity:0,duration:.8,ease:'expo.out',stagger:.06,delay:.2});
+/* foto do topo: zoom lento + parallax do mouse + saída com a rolagem */
+const himg=$('#hero-img');
+gsap.fromTo(himg,{scale:1.12},{scale:1,duration:2.4,ease:'expo.out'});
+if(fine){const qx=gsap.quickTo(himg,'x',{duration:1.2,ease:'power3'}),qy=gsap.quickTo(himg,'y',{duration:1.2,ease:'power3'}),
+  tx=gsap.quickTo('#topo-lines','x',{duration:1.4,ease:'power3'}),ty=gsap.quickTo('#topo-lines','y',{duration:1.4,ease:'power3'});
+  hero.addEventListener('mousemove',e=>{const u=e.clientX/innerWidth-.5,v=e.clientY/innerHeight-.5;qx(u*-22);qy(v*-14);tx(u*14);ty(v*10)})}
+gsap.to('.hero .ph',{yPercent:14,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero .ln1',{xPercent:-12,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero .ln2',{xPercent:10,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+
+/* ---------- faixa amarela: velocidade reage à rolagem ---------- */
+const mq=$('#marq');mq.innerHTML+=mq.innerHTML;
+const loop=gsap.to(mq,{xPercent:-50,ease:'none',duration:26,repeat:-1});
+ScrollTrigger.create({trigger:'.marq',start:'top bottom',end:'bottom top',onUpdate:s=>{const v=s.getVelocity();gsap.to(loop,{timeScale:v<0?-1-Math.min(4,-v/400):1+Math.min(4,v/400),duration:.3,overwrite:true,onComplete:()=>gsap.to(loop,{timeScale:v<0?-1:1,duration:1})});gsap.to(mq,{skewX:gsap.utils.clamp(-8,8,v/-180),duration:.4,overwrite:'auto'})}});
+
+/* ---------- títulos de seção: palavras sobem de trás da linha ---------- */
+if(window.SplitText)$$('.split').forEach(h=>{const sp=new SplitText(h,{type:'words,chars'});
+  gsap.from(sp.chars,{yPercent:80,opacity:0,rotationX:-70,transformOrigin:'50% 100%',duration:.9,ease:'expo.out',stagger:.018,scrollTrigger:{trigger:h,start:'top 88%',once:true}})});
+
+/* ---------- blocos: entrada escalonada ---------- */
+ScrollTrigger.batch('.rv',{start:'top 90%',once:true,onEnter:b=>gsap.from(b,{y:36,opacity:0,duration:1,ease:'expo.out',stagger:.09})});
+$$('.servicos ul').forEach(ul=>gsap.from(ul.children,{x:-14,opacity:0,duration:.7,ease:'expo.out',stagger:.045,scrollTrigger:{trigger:ul,start:'top 88%',once:true}}));
+$$('.historia ul').forEach(ul=>gsap.from(ul.children,{y:16,opacity:0,duration:.6,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:ul,start:'top 90%',once:true}}));
+gsap.from('.frota .plate .sq',{clipPath:'inset(0 0 45% 0)',duration:1.3,ease:'expo.inOut',scrollTrigger:{trigger:'.frota',start:'top 75%',once:true}});
+gsap.from(['.tabs','#panel','#builder'],{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.frota',start:'top 70%',once:true}});
+
+/* ---------- fotos: cortina na entrada + parallax interno ---------- */
+$$('.clip').forEach(f=>{gsap.from(f,{clipPath:'inset(35% 0 0 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:f,start:'top 88%',once:true}});
+  const im=f.querySelector('img');gsap.fromTo(im,{yPercent:-7},{yPercent:7,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}})});
+
+/* ---------- obras: título rasgado na emenda ---------- */
+$$('.proj').forEach(p=>{const tl=gsap.timeline({scrollTrigger:{trigger:p,start:'top top',end:'bottom bottom',scrub:.6}});
+  const vh=()=>innerHeight;
+  tl.fromTo(p.querySelector('.pane.l img'),{y:()=>vh()*.1},{y:()=>-vh()*.1,ease:'none'},0)
+    .fromTo(p.querySelector('.pane.r img'),{y:()=>-vh()*.1},{y:()=>vh()*.1,ease:'none'},0)
+    .fromTo(p.querySelector('.ptitle .a'),{y:()=>vh()*.22},{y:()=>-vh()*.22,ease:'none'},0)
+    .fromTo(p.querySelector('.ptitle .b'),{y:()=>-vh()*.22},{y:()=>vh()*.22,ease:'none'},0);
+  gsap.from(p.querySelector('.cap'),{y:30,opacity:0,duration:.8,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 40%',once:true}})});
+
+/* ---------- quem somos: palavras acendem conforme a leitura ---------- */
+if(window.SplitText)$$('.words').forEach(pg=>{const sp=new SplitText(pg,{type:'words'});
+  gsap.fromTo(sp.words,{opacity:.18},{opacity:1,stagger:.06,ease:'none',scrollTrigger:{trigger:pg,start:'top 85%',end:'bottom 45%',scrub:true}})});
+
+/* ---------- contato: número entra letra a letra ---------- */
+gsap.from('#num .ch',{yPercent:100,opacity:0,duration:.9,ease:'expo.out',stagger:.03,scrollTrigger:{trigger:'#num',start:'top 92%',once:true}});
+gsap.from('#fname .ch',{yPercent:60,opacity:0,duration:1,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'#fname',start:'top 98%',once:true}});
+
+ScrollTrigger.refresh();
+})();
+</script>
+</body>
+</html>
