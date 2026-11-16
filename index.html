@@ -12,6 +12,7 @@
 <meta property="og:description" content="Escavadeiras, pá carregadeira, retro, prancha e Munck no Extremo Sul da Bahia. Orçamento pelo WhatsApp.">
 <meta property="og:image" content="img/og.jpg">
 <meta property="og:locale" content="pt_BR">
+<link rel="preload" as="image" href="img/hero-jd.webp" fetchpriority="high">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <title>Pinheiro Locações — Terraplenagem e locação de máquinas pesadas</title>
 <meta name="description" content="Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Escavadeiras, pá carregadeira, retroescavadeira, caminhão prancha e Munck. Orçamento pelo WhatsApp.">
@@ -57,13 +58,12 @@ h1,h2,h3,p{margin:0}
 .mag{will-change:transform}
 
 /* ---------- CURSOR ---------- */
-.cur,.cur-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:200;opacity:0;transition:opacity .3s}
-.cur{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--accent);mix-blend-mode:multiply;display:grid;place-items:center;transform:scale(.25);transition:transform .45s var(--ease),opacity .3s,background-color .3s}
-.cur span{font:600 13px var(--text);color:var(--ink);opacity:0;transition:opacity .25s;white-space:nowrap}
-.cur.big{transform:scale(1)}
-.cur.label{transform:scale(2.1);mix-blend-mode:normal}
-.cur.label span{opacity:1;font-size:7px}
-.cur.dark-bg{mix-blend-mode:normal}
+.cur{position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;pointer-events:none;z-index:200;opacity:0;transition:opacity .3s;display:grid;place-items:center}
+.cur .dot{position:absolute;inset:0;border-radius:50%;background:var(--accent);mix-blend-mode:multiply;transform:scale(.25);transition:transform .45s var(--ease)}
+.cur span{position:relative;font:600 13px var(--text);color:var(--ink);opacity:0;transition:opacity .25s;white-space:nowrap}
+.cur.big .dot{transform:scale(1)}
+.cur.label .dot{transform:scale(2.1);mix-blend-mode:normal}
+.cur.label span{opacity:1}
 @media (pointer:fine){.cur.on{opacity:1}}
 
 /* ---------- NAV ---------- */
@@ -87,22 +87,20 @@ h1,h2,h3,p{margin:0}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;height:100svh;min-height:680px;overflow:hidden;color:var(--on-dark);background:var(--navy-deep)}
-.hero .ph{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden}
-.hero .ph img{width:100%;height:118%;object-fit:cover;object-position:50% 0%;will-change:transform}
-.hero .tint{position:absolute;left:0;right:0;top:0;height:62%;background:rgba(15,22,54,.22)}
-.ridges{position:absolute;left:0;width:100%;top:31%;height:27%;overflow:visible;pointer-events:none}
-.ridges path{fill:var(--navy-deep);stroke:var(--on-dark);stroke-width:1.1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
-.ridges path.gold{stroke:var(--accent);stroke-width:1.6}
-.hero .ground{position:absolute;z-index:3;left:var(--m);right:var(--m);bottom:clamp(96px,12vh,120px);display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,30vw);align-items:end;gap:48px}
+.hero .ph{position:absolute;left:0;right:0;top:0;height:70%;overflow:hidden}
+.hero .ph img{width:100%;height:108%;object-fit:cover;object-position:50% 0%;transform-origin:50% 0}
+.hero .tint{position:absolute;left:0;right:0;top:0;height:70%;background:rgba(15,22,54,.22)}
+.ridges{position:absolute;left:0;width:100%;top:42%;height:58%;display:block;pointer-events:none}
+.hero .ground{position:absolute;z-index:3;left:var(--m);right:var(--m);bottom:clamp(88px,11vh,112px);display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,30vw);align-items:end;gap:48px}
 .hero h1{perspective:900px;font-weight:inherit}
-.hero .ln{display:block;font:800 clamp(56px,8.8vw,176px)/.9 var(--display);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;padding-top:.08em}
+.hero .ln{display:block;font:800 clamp(52px,7.6vw,156px)/.9 var(--display);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;padding-top:.08em}
 .hero .ln2{color:var(--accent)}
 .hero .mid{padding-bottom:.2em}
 .hero .mid p.alt{margin:16px 0 0;font-size:15px;font-weight:500;color:var(--on-dark-muted)}
 .hero .mid p.alt a{color:var(--on-dark);text-decoration:none;font-weight:600}
 .hero .mid p.alt a:hover{color:var(--accent)}
 .hero .mid p{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);line-height:1.5;font-weight:500;margin-bottom:26px;text-wrap:pretty;color:var(--on-dark)}
-.level{position:absolute;z-index:3;right:var(--m);top:calc(31% - 52px);display:flex;align-items:center;gap:14px;font-size:14px;font-weight:500;background:var(--navy-deep);padding:9px 14px}
+.level{position:absolute;z-index:3;right:var(--m);top:calc(42% - 52px);display:flex;align-items:center;gap:14px;font-size:14px;font-weight:500;background:var(--navy-deep);padding:9px 14px}
 .level .bar{width:120px;height:6px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
 .level .bar i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
 .level b{font-weight:600;color:var(--accent);min-width:3ch;text-align:right}
@@ -117,7 +115,7 @@ h1,h2,h3,p{margin:0}
 section{position:relative}
 .h2{font:800 clamp(1.75rem,1.2rem + 1.6vw,2.5rem)/1.05 var(--display);letter-spacing:-.03em;text-transform:uppercase}
 .par{overflow:hidden}
-.par img{width:100%;height:116%;object-fit:cover;will-change:transform}
+.par img{width:100%;height:116%;object-fit:cover}
 
 /* ---------- SERVIÇOS ---------- */
 .servicos{padding:clamp(120px,18vh,200px) var(--m)}
@@ -179,7 +177,7 @@ section{position:relative}
 /* ---------- OBRAS ---------- */
 .obras{background:var(--navy-deep);color:var(--on-dark)}
 .obras .ohead{position:absolute;top:28px;left:var(--m);z-index:4;background:var(--navy-deep);padding:10px 14px}
-.proj{height:135svh;position:relative}
+.proj{height:165svh;position:relative}
 .proj .stage{position:sticky;top:0;height:100svh;overflow:hidden}
 .pane{position:absolute;top:0;bottom:0;width:50%;overflow:hidden}
 .pane.l{left:0}.pane.r{right:0}
@@ -232,8 +230,7 @@ section{position:relative}
 
 /* ---------- CONTATO ---------- */
 .contato{background:var(--navy);color:var(--on-dark);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto;row-gap:clamp(64px,14vh,140px);padding:clamp(56px,9vh,96px) var(--m) 36px;overflow:hidden}
-.contato .flat{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.contato .flat path{stroke:rgba(240,188,46,.3);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.contato .flat{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block}
 .contato h2{position:relative;font:500 clamp(1.25rem,1.1rem + .5vw,1.5rem)/1.35 var(--text);max-width:26ch}
 .contato .num{position:relative;align-self:end;justify-self:start;display:inline-block;text-decoration:none;font:800 clamp(36px,7.6vw,150px)/.95 var(--display);letter-spacing:-.04em;white-space:nowrap}
 .contato .num .dot{position:relative;display:inline-block;width:.16em;height:.16em;border-radius:50%;background:#4ADE80;vertical-align:.32em;margin-right:.18em}
@@ -266,6 +263,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 /* ---------- WHATSAPP FLUTUANTE ---------- */
 .wa{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;display:grid;place-items:center;background:var(--accent);color:var(--ink);transform:translateY(130px);transition:transform .6s var(--ease)}
 .wa.on{transform:none}
+.wa.on.away{transform:translateY(130px)}
 .wa svg{width:28px;height:28px;transition:transform .5s var(--ease)}
 .wa:hover svg{transform:rotate(-12deg) scale(1.1)}
 .wa::after{content:"";position:absolute;inset:0;border:2px solid var(--accent);animation:ring 2.4s var(--ease) infinite}
@@ -275,13 +273,13 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 @media (max-width:860px){
   .nav a.lk{display:none}
   .nav .mark b{display:none}
-  .hero .ph,.hero .tint{height:52%}
-  .hero .ph img{object-position:30% 30%}
-  .ridges{top:24%;height:25%}
+  .hero .ph,.hero .tint{height:58%}
+  .hero .ph img{object-position:50% 0%}
+  .ridges{top:30%;height:70%}
   .hero .ground{grid-template-columns:minmax(0,1fr);gap:22px;bottom:96px}
   .hero .ln{font-size:12.8vw}
-  .level{top:calc(24% - 48px);font-size:13px}
-  .level .bar{width:80px}
+  .level{top:calc(30% - 44px);font-size:12px;padding:7px 10px;gap:8px}
+  .level .bar{width:48px}
   .servicos .grid{grid-template-columns:1fr;row-gap:40px;margin-top:48px}
   .servicos .col:nth-child(n){grid-column:1}
   .servicos li button{font-size:18px;line-height:1.4}
@@ -322,7 +320,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 </head>
 <body>
 <a class="skip" href="#servicos">Pular para o conteúdo</a>
-<div class="cur" id="cur" aria-hidden="true"><span></span></div>
+<div class="cur" id="cur" aria-hidden="true"><i class="dot"></i><span></span></div>
 
 <nav class="nav" id="nav" aria-label="Principal">
   <a class="mark" href="#topo" aria-label="Pinheiro Locações, início"><span class="logo-chip"><svg class="logo" viewBox="0 0 150 150" aria-hidden="true"><path class="p" pathLength="1" d="M35 106V47l41-24 42 24v26L77 96"/><path class="l" pathLength="1" d="M53 49v60l23 13 42-24V84"/></svg></span><b>Pinheiro Locações</b></a>
@@ -335,10 +333,11 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 <header class="hero" id="topo">
   <div class="ph"><picture>
-    <img id="hero-img" src="img/hero-jd.webp" width="1440" height="560" alt="Escavadeira John Deere da Pinheiro Locações com o braço erguido em obra rural">
+    <source media="(max-width:860px)" srcset="img/hero-jd-m.webp">
+    <img id="hero-img" src="img/hero-jd.webp" width="1440" height="750" fetchpriority="high" decoding="async" alt="Escavadeira John Deere da Pinheiro Locações com o braço erguido em obra rural">
   </picture></div>
   <div class="tint"></div>
-  <svg class="ridges" id="ridges" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <canvas class="ridges" id="ridges" aria-hidden="true"></canvas>
   <div class="level" aria-hidden="true"><span id="lvl-t">Terreno bruto</span><span class="bar"><i id="lvl"></i></span><b id="lvl-n">0%</b></div>
   <div class="ground">
     <h1><span class="ln ln1">Pinheiro</span><span class="ln ln2">Locações</span></h1>
@@ -445,32 +444,32 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 <section class="obras" id="obras" aria-labelledby="o-h">
   <article class="proj"><div class="stage">
     <h2 class="h2 ohead" id="o-h">Obras</h2>
-    <div class="pane l"><img src="img/barragem.webp" width="640" height="1136" alt="Vista aérea da barragem finalizada em meio à mata" loading="lazy"></div>
-    <div class="pane r"><img src="img/jd_buraco.webp" width="640" height="1136" alt="Escavadeira John Deere escavando reservatório" loading="lazy"></div>
+    <div class="pane l"><img src="img/barragem.webp" width="640" height="1136" alt="Vista aérea da barragem finalizada em meio à mata" loading="lazy" decoding="async"></div>
+    <div class="pane r"><img src="img/jd_buraco.webp" width="640" height="1136" alt="Escavadeira John Deere escavando reservatório" loading="lazy" decoding="async"></div>
     <div class="ptitle"><h3><span class="a">Barragem</span><span class="b" aria-hidden="true">Barragem</span></h3>
       <p class="cap"><span>Barragem e reservatório · Rural · 2026</span><br><a href="https://www.instagram.com/p/DVJtmu7EREr/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
-    <div class="pane l"><img src="img/santarita.webp" width="720" height="1280" alt="Área montanhosa terraplenada vista de cima em Santa Rita do Planalto" loading="lazy"></div>
-    <div class="pane r"><img src="img/jd_barranco.webp" width="640" height="1136" alt="Escavadeira John Deere cortando barranco de terra vermelha" loading="lazy"></div>
+    <div class="pane l"><img src="img/santarita.webp" width="720" height="1280" alt="Área montanhosa terraplenada vista de cima em Santa Rita do Planalto" loading="lazy" decoding="async"></div>
+    <div class="pane r"><img src="img/jd_barranco.webp" width="640" height="1136" alt="Escavadeira John Deere cortando barranco de terra vermelha" loading="lazy" decoding="async"></div>
     <div class="ptitle"><h3><span class="a">Encosta</span><span class="b" aria-hidden="true">Encosta</span></h3>
       <p class="cap"><span>Relevo montanhoso · Santa Rita do Planalto · 2026</span><br><a href="https://www.instagram.com/p/DcttlXiRmGk/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
-    <div class="pane l"><img src="img/area_aerea.webp" width="900" height="506" alt="Vista aérea de grande área preparada para plantio" loading="lazy"></div>
-    <div class="pane r"><img src="img/jd_campo.webp" width="720" height="1280" alt="Escavadeira John Deere preparando área de plantio" loading="lazy"></div>
+    <div class="pane l"><img src="img/area_aerea.webp" width="900" height="506" alt="Vista aérea de grande área preparada para plantio" loading="lazy" decoding="async"></div>
+    <div class="pane r"><img src="img/jd_campo.webp" width="720" height="1280" alt="Escavadeira John Deere preparando área de plantio" loading="lazy" decoding="async"></div>
     <div class="ptitle"><h3><span class="a">Plantio</span><span class="b" aria-hidden="true">Plantio</span></h3>
       <p class="cap"><span>Preparo de área e irrigação · Rural · 2026</span><br><a href="https://www.instagram.com/p/DcEQ2egEZ1z/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
-    <div class="pane l"><img src="img/loteamento.webp" width="720" height="1280" alt="Loteamento com ruas e rotatória sendo terraplenado, visto de cima" loading="lazy"></div>
-    <div class="pane r"><img src="img/jd_caminhao.webp" width="640" height="1136" alt="Escavadeira John Deere carregando caminhão caçamba" loading="lazy"></div>
+    <div class="pane l"><img src="img/loteamento.webp" width="720" height="1280" alt="Loteamento com ruas e rotatória sendo terraplenado, visto de cima" loading="lazy" decoding="async"></div>
+    <div class="pane r"><img src="img/jd_caminhao.webp" width="640" height="1136" alt="Escavadeira John Deere carregando caminhão caçamba" loading="lazy" decoding="async"></div>
     <div class="ptitle"><h3><span class="a">Lotes</span><span class="b" aria-hidden="true">Lotes</span></h3>
       <p class="cap"><span>Terraplenagem de loteamento · Urbano · 2026</span><br><a href="https://www.instagram.com/p/De_yMHTRA3-/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
   <article class="proj"><div class="stage">
-    <div class="pane l"><img src="img/drenagem.webp" width="720" height="1280" alt="Equipe instalando tubulação de drenagem em vala aberta na rua" loading="lazy"></div>
-    <div class="pane r"><img src="img/urbano_rua.webp" width="720" height="1280" alt="Escavadeira trabalhando em rua da cidade em frente ao comércio" loading="lazy"></div>
+    <div class="pane l"><img src="img/drenagem.webp" width="720" height="1280" alt="Equipe instalando tubulação de drenagem em vala aberta na rua" loading="lazy" decoding="async"></div>
+    <div class="pane r"><img src="img/urbano_rua.webp" width="720" height="1280" alt="Escavadeira trabalhando em rua da cidade em frente ao comércio" loading="lazy" decoding="async"></div>
     <div class="ptitle"><h3><span class="a">Drenagem</span><span class="b" aria-hidden="true">Drenagem</span></h3>
       <p class="cap"><span>Drenagem e redes em via urbana · 2026</span><br><a href="https://www.instagram.com/p/DclyfXTRLPS/" target="_blank" rel="noopener noreferrer">Ver a obra no Instagram →</a></p></div>
   </div></article>
@@ -478,17 +477,17 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 <section class="como" id="como" aria-labelledby="c-h">
   <div class="row ra">
-    <figure class="par clip" data-cursor="Ver"><img src="img/equipe.webp" width="1330" height="1600" alt="Equipe da Pinheiro Locações em frente a uma escavadeira na obra" loading="lazy"></figure>
+    <figure class="par clip" data-cursor="Ver"><img src="img/equipe.webp" width="1330" height="1600" alt="Equipe da Pinheiro Locações em frente a uma escavadeira na obra" loading="lazy" decoding="async"></figure>
     <div class="t"><h2 class="h2 split" id="c-h">Como funciona a locação</h2>
       <p class="rv"><b>Primeiro, a conversa.</b> Você chama no WhatsApp, conta o que precisa, onde é e o prazo. Se for preciso, a gente vai até o local ver o terreno antes de fechar.</p></div>
   </div>
   <div class="row rb">
-    <figure class="par clip" data-cursor="Ver"><img src="img/jd_prancha.webp" width="640" height="1136" alt="Escavadeira John Deere embarcada no caminhão para mobilização" loading="lazy"></figure>
+    <figure class="par clip" data-cursor="Ver"><img src="img/jd_prancha.webp" width="640" height="1136" alt="Escavadeira John Deere embarcada no caminhão para mobilização" loading="lazy" decoding="async"></figure>
     <p class="rv"><b>Depois, a mobilização.</b> A máquina sai da nossa base com a revisão preventiva em dia e chega à obra no nosso caminhão prancha, no dia combinado.</p>
   </div>
   <div class="row rc">
     <p class="rv"><b>Por fim, o serviço.</b> Operador experiente no comando e acompanhamento de perto, do nascer ao pôr do sol, até o terreno ficar do jeito que o projeto pede.</p>
-    <figure class="par clip" data-cursor="Ver"><img src="img/jd_retro_obra.webp" width="640" height="1136" alt="Retroescavadeira John Deere trabalhando no fim de tarde" loading="lazy"></figure>
+    <figure class="par clip" data-cursor="Ver"><img src="img/jd_retro_obra.webp" width="640" height="1136" alt="Retroescavadeira John Deere trabalhando no fim de tarde" loading="lazy" decoding="async"></figure>
   </div>
 </section>
 
@@ -514,12 +513,12 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
   </div>
   <div class="r3">
     <figure><div class="par clip" data-cursor="Ver"><img src="img/bamaq.webp" width="900" height="1600" alt="Entrega da escavadeira New Holland na concessionária BAMAQ" loading="lazy" style="object-position:50% 40%"></div><figcaption>Entrega da New Holland E145C EVO na BAMAQ.</figcaption></figure>
-    <figure><div class="par clip" data-cursor="Ver"><img src="img/xcmg_fabrica.webp" width="1200" height="1600" alt="Davi Pinheiro na fábrica da XCMG, entre escavadeiras novas" loading="lazy"></div><figcaption>Davi Pinheiro na fábrica da XCMG no Brasil.</figcaption></figure>
+    <figure><div class="par clip" data-cursor="Ver"><img src="img/xcmg_fabrica.webp" width="1200" height="1600" alt="Davi Pinheiro na fábrica da XCMG, entre escavadeiras novas" loading="lazy" decoding="async"></div><figcaption>Davi Pinheiro na fábrica da XCMG no Brasil.</figcaption></figure>
   </div>
 </section>
 
 <section class="contato" id="contato" aria-labelledby="ct-h">
-  <svg class="flat" id="flat" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <canvas class="flat" id="flat" aria-hidden="true"></canvas>
   <h2 id="ct-h" class="rv">Terreno nivelado. Agora conte a obra, a cidade e o prazo: a gente responde no WhatsApp.</h2>
   <a class="num mag" id="num" data-cursor="Chamar" data-wa="Olá, Pinheiro Locações! Vim pelo site e quero um orçamento." href="https://wa.me/5573998402367"><span class="dot" aria-hidden="true"></span><span class="t">(73) 99840-2367</span></a>
   <div class="foot rv">
@@ -577,45 +576,51 @@ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttri
 /* ---------- logo: P e L desenhados como trilha de escavação ---------- */
 if(!reduce)$$('.nav .logo path').forEach((p,i)=>{p.style.strokeDasharray=1;p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:1300,delay:250+i*450,easing:'cubic-bezier(.65,0,.35,1)',fill:'both'})});
 
-/* ---------- curvas de nível vivas que se nivelam com a rolagem ---------- */
-function contours(svg,n,base){
-  const W=1000,H=1000;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
-  const seeds=[...Array(n)].map((_,i)=>({y:(i+1)*H/(n+1),a:[Math.random()*6,Math.random()*6,Math.random()*6],k:.6+Math.random()*.8,s:.4+Math.random()*.5}));
-  const paths=seeds.map(()=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');svg.appendChild(p);return p});
-  return (amp,t,wob)=>{seeds.forEach((s,i)=>{let d='';for(let x=0;x<=W;x+=20){const u=x/W;
-    const hill=Math.exp(-Math.pow((u-.68)/.22,2))*140+Math.exp(-Math.pow((u-.18)/.16,2))*90;
-    const w=26*Math.sin(u*7+s.a[0]+t*s.s)+14*Math.sin(u*15+s.a[1]-t*s.s*.8)+8*Math.sin(u*29+s.a[2]+t*.6);
-    const y=s.y-amp*(hill*s.k*(1-i/(n*1.4))+w)-(wob||0)*Math.sin(u*6+t+i*.4)*4;
-    d+=(x?'L':'M')+x+' '+y.toFixed(1)}paths[i].setAttribute('d',d)})};
-}
-const drawFlat=contours($('#flat'),22);
-/* relevo em camadas (cristas): sobe na entrada, reage ao mouse e se nivela com a rolagem */
-const NS='http://www.w3.org/2000/svg',rsvg=$('#ridges'),RW=1000,RH=400,RN=matchMedia('(max-width:860px)').matches?18:26;
-rsvg.setAttribute('viewBox',`0 0 ${RW} ${RH}`);
-const R=[...Array(RN)].map((_,i)=>{const p=document.createElementNS(NS,'path');if(i%7===4)p.setAttribute('class','gold');p.setAttribute('stroke-opacity',(.22+.78*i/(RN-1)).toFixed(2));rsvg.appendChild(p);
-  return{p,i,ph:[Math.random()*9,Math.random()*9,Math.random()*9],pk:[...Array(3)].map(()=>({x:.12+Math.random()*.8,w:.035+Math.random()*.07,h:.35+Math.random()*.85}))}});
+/* ---------- relevo em camadas (canvas): sobe na entrada, reage ao mouse e se nivela com a rolagem ---------- */
+const mobile=matchMedia('(max-width:860px)').matches;
+const rc=$('#ridges'),rx=rc.getContext('2d'),fc=$('#flat'),fx=fc.getContext('2d');
 const hero=$('.hero'),lvl=$('#lvl'),lvlT=$('#lvl-t'),lvlN=$('#lvl-n');
+const RN=mobile?18:26,GOLD='#F0BC2E',NAVY='#0F1636';
+const R=[...Array(RN)].map((_,i)=>({i,gold:i%7===4,a:.22+.78*i/(RN-1),ph:[Math.random()*9,Math.random()*9,Math.random()*9],pk:[...Array(3)].map(()=>({x:.12+Math.random()*.8,w:.035+Math.random()*.07,h:.35+Math.random()*.85}))}));
+const F=[...Array(mobile?14:22)].map((_,i)=>({a:[Math.random()*6,Math.random()*6],s:.4+Math.random()*.5}));
+let dpr=1,RW=0,RHc=0,BAND=0,FW=0,FH=0;
+function size(){dpr=Math.min(2,devicePixelRatio||1);
+  const r=rc.getBoundingClientRect();RW=r.width;RHc=r.height;rc.width=Math.round(RW*dpr);rc.height=Math.round(RHc*dpr);
+  BAND=hero.offsetHeight*(mobile?.19:.2);
+  const f=fc.getBoundingClientRect();FW=f.width;FH=f.height;fc.width=Math.round(FW*dpr);fc.height=Math.round(FH*dpr)}
+size();addEventListener('resize',()=>{size();drawAll(performance.now())});
 let heroP=0,intro=reduce?1:0,mx=.5,my=.5,mb=0,mbT=0;
 function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.75)));lvl.style.transform=`scaleX(${heroP})`;lvlN.textContent=Math.round(heroP*100)+'%';lvlT.textContent=heroP>.98?'Terreno nivelado':'Terreno bruto'}
-hero.addEventListener('pointermove',e=>{const r=rsvg.getBoundingClientRect();mx=(e.clientX-r.left)/r.width;my=(e.clientY-r.top)/r.height;mbT=(my>-.3&&my<1.1)?1:0},{passive:true});
+hero.addEventListener('pointermove',e=>{const r=rc.getBoundingClientRect();mx=(e.clientX-r.left)/r.width;my=(e.clientY-r.top)/BAND;mbT=(my>-.3&&my<1.1)?1:0},{passive:true});
 hero.addEventListener('pointerleave',()=>mbT=0);
-function drawRidges(t){const A=intro*(1-heroP),gap=(RH-46)/(RN-1);
-  R.forEach(r=>{const yb=26+r.i*gap;const fi=r.i/(RN-1);let d='';
-    for(let x=0;x<=RW;x+=8){const u=x/RW;const env=Math.pow(Math.sin(Math.PI*u),1.6);
-      let h=0;r.pk.forEach(k=>{const kx=k.x+.02*Math.sin(t*.25+r.ph[0]);h+=k.h*(1+.15*Math.sin(t*.7+r.i))*Math.exp(-Math.pow((u-kx)/k.w,2))});
-      const n=Math.sin(u*23+r.ph[0]+t*.5)*.08+Math.sin(u*47+r.ph[1]-t*.4)*.05+Math.sin(u*9+r.ph[2])*.1;
-      const bump=mb*Math.exp(-Math.pow((u-mx)/.07,2))*Math.exp(-Math.pow((fi-my)/.22,2))*1.1;
-      const y=yb-A*env*(h+Math.max(0,n+.12))*58-bump*48*(1-heroP);
-      d+=(x?'L':'M-30 '+y.toFixed(1)+'L')+x+' '+y.toFixed(1);if(x===RW)d+=`L${RW+30} ${y.toFixed(1)}`}
-    r.p.setAttribute('d',d+`L${RW+30} ${RH+3000}L-30 ${RH+3000}Z`)})}
-let t0=performance.now(),introStart=null;
-function frame(now){const t=reduce?0:(now-t0)/1000;
-  if(introStart===null)introStart=now; if(!reduce){const k=Math.min(1,(now-introStart-250)/1700);intro=k<=0?0:1-Math.pow(1-k,3)}
+const STEP=mobile?10:8;
+function drawRidges(t){const A=intro*(1-heroP),gap=(BAND-40)/(RN-1),amp=BAND*.16;
+  rx.setTransform(dpr,0,0,dpr,0,0);rx.clearRect(0,0,RW,RHc);rx.lineJoin='round';
+  const n=Math.ceil(RW/STEP)+1,ys=new Float32Array(n);
+  for(const r of R){const yb=24+r.i*gap,fi=r.i/(RN-1);
+    for(let k=0;k<n;k++){const x=k*STEP,u=x/RW,env=Math.pow(Math.sin(Math.PI*Math.min(1,u)),1.6);let h=0;
+      for(const p of r.pk){const kx=p.x+.02*Math.sin(t*.25+r.ph[0]),d=(u-kx)/p.w;h+=p.h*(1+.15*Math.sin(t*.7+r.i))*Math.exp(-d*d)}
+      const no=Math.sin(u*23+r.ph[0]+t*.5)*.08+Math.sin(u*47+r.ph[1]-t*.4)*.05+Math.sin(u*9+r.ph[2])*.1;
+      const du=(u-mx)/.07,dv=(fi-my)/.22,bump=mb*Math.exp(-du*du-dv*dv)*1.1;
+      ys[k]=yb-A*env*(h+Math.max(0,no+.12))*amp-bump*amp*.8*(1-heroP)}
+    rx.beginPath();rx.moveTo(-4,ys[0]);for(let k=1;k<n;k++)rx.lineTo(k*STEP,ys[k]);rx.lineTo(RW+4,ys[n-1]);
+    rx.lineTo(RW+4,RHc+4);rx.lineTo(-4,RHc+4);rx.closePath();rx.fillStyle=NAVY;rx.fill();
+    rx.beginPath();rx.moveTo(-4,ys[0]);for(let k=1;k<n;k++)rx.lineTo(k*STEP,ys[k]);rx.lineTo(RW+4,ys[n-1]);
+    rx.lineWidth=r.gold?1.6:1.1;rx.strokeStyle=r.gold?GOLD:`rgba(244,245,248,${r.a.toFixed(2)})`;rx.stroke()}}
+function drawFlat(t){fx.setTransform(dpr,0,0,dpr,0,0);fx.clearRect(0,0,FW,FH);fx.lineWidth=1.3;fx.strokeStyle='rgba(240,188,46,.3)';
+  const n=F.length,step=12;F.forEach((f,i)=>{const yb=(i+1)*FH/(n+1);fx.beginPath();
+    for(let x=0;x<=FW+step;x+=step){const u=x/FW;const y=yb+Math.sin(u*6+t*.8+i*.4)*4+Math.sin(u*13+f.a[0]-t*f.s)*2;x?fx.lineTo(x,y):fx.moveTo(x,y)}fx.stroke()})}
+let t0=performance.now(),introStart=null,heroVis=true,flatVis=false;
+new IntersectionObserver(es=>es.forEach(e=>{if(e.target===hero)heroVis=e.isIntersecting;else flatVis=e.isIntersecting})).observe(hero);
+new IntersectionObserver(es=>es.forEach(e=>flatVis=e.isIntersecting)).observe(fc);
+function drawAll(now){const t=reduce?0:(now-t0)/1000;drawRidges(t);drawFlat(t)}
+function frame(now){const t=(now-t0)/1000;
+  if(introStart===null)introStart=now;const k=Math.min(1,(now-introStart-250)/1700);intro=k<=0?0:1-Math.pow(1-k,3);
   mb+=(mbT-mb)*.06;
-  if(scrollY<hero.offsetHeight*1.1)drawRidges(t);
-  const c=$('#contato').getBoundingClientRect(); if(c.top<innerHeight&&c.bottom>0)drawFlat(0,t,reduce?0:1);
-  if(!reduce)requestAnimationFrame(frame)}
-heroProg(); requestAnimationFrame(frame); if(reduce){drawRidges(0);drawFlat(0,0,0)}
+  if(!document.hidden){if(heroVis)drawRidges(t);if(flatVis)drawFlat(t)}
+  requestAnimationFrame(frame)}
+heroProg();
+if(reduce)drawAll(0);else requestAnimationFrame(frame);
 addEventListener('scroll',heroProg,{passive:true});
 
 /* ---------- nav: sólida depois do topo, some ao descer ---------- */
@@ -627,10 +632,9 @@ addEventListener('scroll',navTick,{passive:true});navTick();
 
 /* ---------- cursor ---------- */
 const cur=$('#cur'),curL=cur.querySelector('span');
-if(fine&&!reduce){let mx=-100,my=-100,cx=mx,cy=my;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.classList.add('on')},{passive:true});
+if(fine&&!reduce&&window.gsap){const qx=gsap.quickTo(cur,'x',{duration:.35,ease:'power3'}),qy=gsap.quickTo(cur,'y',{duration:.35,ease:'power3'});
+  addEventListener('mousemove',e=>{qx(e.clientX);qy(e.clientY);cur.classList.add('on')},{passive:true});
   document.addEventListener('mouseleave',()=>cur.classList.remove('on'));
-  (function loop(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cur.style.transform=cur.className.includes('label')?`translate(${cx}px,${cy}px) scale(2.1)`:cur.className.includes('big')?`translate(${cx}px,${cy}px) scale(1)`:`translate(${cx}px,${cy}px) scale(.25)`;requestAnimationFrame(loop)})();
   document.addEventListener('mouseover',e=>{const l=e.target.closest('[data-cursor]');const a=e.target.closest('a,button,label,input');
     cur.classList.toggle('label',!!l);curL.textContent=l?l.dataset.cursor:'';cur.classList.toggle('big',!l&&!!a)});
 }
@@ -705,7 +709,9 @@ gsap.to('.hero .ground',{y:-60,ease:'none',scrollTrigger:{trigger:hero,start:'to
 /* ---------- faixa amarela: velocidade reage à rolagem ---------- */
 const mq=$('#marq');mq.innerHTML+=mq.innerHTML;
 const loop=gsap.to(mq,{xPercent:-50,ease:'none',duration:26,repeat:-1});
-ScrollTrigger.create({trigger:'.marq',start:'top bottom',end:'bottom top',onUpdate:s=>{const v=s.getVelocity();gsap.to(loop,{timeScale:v<0?-1-Math.min(4,-v/400):1+Math.min(4,v/400),duration:.3,overwrite:true,onComplete:()=>gsap.to(loop,{timeScale:v<0?-1:1,duration:1})});gsap.to(mq,{skewX:gsap.utils.clamp(-8,8,v/-180),duration:.4,overwrite:'auto'})}});
+let mDir=1,mVel=0,mTs=1,mSk=0;const setSk=gsap.quickSetter(mq,'skewX','deg');
+ScrollTrigger.create({trigger:'.marq',start:'top bottom',end:'bottom top',onUpdate:s=>{mVel=s.getVelocity();if(Math.abs(mVel)>40)mDir=mVel<0?-1:1}});
+gsap.ticker.add(()=>{mVel*=.9;const target=mDir*(1+Math.min(4,Math.abs(mVel)/400));mTs+=(target-mTs)*.08;loop.timeScale(mTs);mSk+=(gsap.utils.clamp(-8,8,mVel/-180)-mSk)*.12;setSk(mSk)});
 
 /* ---------- títulos de seção: palavras sobem de trás da linha ---------- */
 if(window.SplitText)$$('.split').forEach(h=>{const sp=new SplitText(h,{type:'words,chars'});
@@ -722,14 +728,16 @@ gsap.from(['.tabs','#panel','#builder'],{y:30,opacity:0,duration:1,ease:'expo.ou
 $$('.clip').forEach(f=>{gsap.from(f,{clipPath:'inset(35% 0 0 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:f,start:'top 88%',once:true}});
   const im=f.querySelector('img');gsap.fromTo(im,{yPercent:-7},{yPercent:7,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}})});
 
-/* ---------- obras: título rasgado na emenda ---------- */
-$$('.proj').forEach(p=>{const tl=gsap.timeline({scrollTrigger:{trigger:p,start:'top top',end:'bottom bottom',scrub:.6}});
-  const vh=()=>innerHeight;
-  tl.fromTo(p.querySelector('.pane.l img'),{y:()=>vh()*.1},{y:()=>-vh()*.1,ease:'none'},0)
-    .fromTo(p.querySelector('.pane.r img'),{y:()=>-vh()*.1},{y:()=>vh()*.1,ease:'none'},0)
-    .fromTo(p.querySelector('.ptitle .a'),{y:()=>vh()*.22},{y:()=>-vh()*.22,ease:'none'},0)
-    .fromTo(p.querySelector('.ptitle .b'),{y:()=>-vh()*.22},{y:()=>vh()*.22,ease:'none'},0);
-  gsap.from(p.querySelector('.cap'),{y:30,opacity:0,duration:.8,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 40%',once:true}})});
+/* ---------- obras: as metades se encontram e a palavra trava formada ---------- */
+ScrollTrigger.create({trigger:'.obras',start:'top 85%',end:'bottom 15%',onToggle:s=>waBtn.classList.toggle('away',s.isActive)});
+$$('.proj').forEach(p=>{const vh=()=>innerHeight,off=()=>innerHeight*(innerWidth<861?.22:.34);
+  const tl=gsap.timeline({scrollTrigger:{trigger:p,start:'top bottom',end:'bottom bottom',scrub:.5,invalidateOnRefresh:true}});
+  tl.fromTo(p.querySelector('.pane.l img'),{y:()=>vh()*.12},{y:()=>-vh()*.06,ease:'none',duration:1},0)
+    .fromTo(p.querySelector('.pane.r img'),{y:()=>-vh()*.12},{y:()=>vh()*.06,ease:'none',duration:1},0)
+    .fromTo(p.querySelector('.ptitle .a'),{y:()=>off()},{y:0,ease:'power3.out',duration:.55},0)
+    .fromTo(p.querySelector('.ptitle .b'),{y:()=>-off()},{y:0,ease:'power3.out',duration:.55},0)
+    .fromTo(p.querySelector('.ptitle h3'),{scale:1},{scale:1.04,duration:.08,ease:'power2.out',yoyo:true,repeat:1},.55)
+    .fromTo(p.querySelector('.cap'),{y:24,opacity:0},{y:0,opacity:1,duration:.12,ease:'power2.out'},.58);});
 
 /* ---------- quem somos: palavras acendem conforme a leitura ---------- */
 if(window.SplitText)$$('.words').forEach(pg=>{const sp=new SplitText(pg,{type:'words'});
