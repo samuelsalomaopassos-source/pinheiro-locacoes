@@ -12,7 +12,8 @@
 <meta property="og:description" content="Escavadeiras, pá carregadeira, retro, prancha e Munck no Extremo Sul da Bahia. Orçamento pelo WhatsApp.">
 <meta property="og:image" content="img/og.jpg">
 <meta property="og:locale" content="pt_BR">
-<link rel="preload" as="image" href="img/hero-jd.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-campo.webp" media="(min-width:861px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-campo-m.webp" media="(max-width:860px)" fetchpriority="high">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <title>Pinheiro Locações — Terraplenagem e locação de máquinas pesadas</title>
 <meta name="description" content="Terraplenagem e locação de máquinas pesadas e caminhões no Extremo Sul da Bahia. Escavadeiras, pá carregadeira, retroescavadeira, caminhão prancha e Munck. Orçamento pelo WhatsApp.">
@@ -103,7 +104,18 @@ h1,h2,h3,p{margin:0}
 .level{position:absolute;z-index:3;right:var(--m);top:calc(42% - 52px);display:flex;align-items:center;gap:14px;font-size:14px;font-weight:500;background:var(--navy-deep);padding:9px 14px}
 .level .bar{width:120px;height:6px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
 .level .bar i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
-.level b{font-weight:600;color:var(--accent);min-width:3ch;text-align:right}
+.level b{font-weight:600;color:var(--accent);min-width:4ch;text-align:right;font-variant-numeric:tabular-nums}
+.level{transition:background-color .5s var(--ease),color .5s}
+.level .lv-btn{all:unset;cursor:pointer;font-weight:600;font-size:13px;background:var(--accent);color:var(--ink);padding:6px 11px;margin-left:2px;transition:transform .25s var(--ease),background-color .3s,color .3s}
+.level .lv-btn:hover{transform:translateY(-1px)}
+.level .lv-btn:active{transform:scale(.95)}
+.level .lv-btn:focus-visible{outline:2px solid var(--on-dark);outline-offset:2px}
+.level.done{background:var(--accent);color:var(--ink)}
+.level.done .bar{background:rgba(17,24,52,.2)}
+.level.done .bar i{background:var(--ink)}
+.level.done b{color:var(--ink)}
+.level.done .lv-btn{background:var(--ink);color:var(--accent)}
+.hero{touch-action:pan-y}
 
 /* ---------- MARQUEE ---------- */
 .marq{background:var(--accent);color:var(--ink);overflow:hidden;padding:22px 0;white-space:nowrap}
@@ -278,8 +290,10 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
   .ridges{top:30%;height:70%}
   .hero .ground{grid-template-columns:minmax(0,1fr);gap:22px;bottom:96px}
   .hero .ln{font-size:12.8vw}
-  .level{top:calc(30% - 44px);font-size:12px;padding:7px 10px;gap:8px}
-  .level .bar{width:48px}
+  .level{top:84px;left:var(--m);right:var(--m);justify-content:space-between;font-size:12px;padding:7px 10px;gap:8px}
+  .level .bar{flex:1}
+  .level .bar{width:40px}
+  .level .lv-btn{font-size:12px;padding:5px 9px}
   .servicos .grid{grid-template-columns:1fr;row-gap:40px;margin-top:48px}
   .servicos .col:nth-child(n){grid-column:1}
   .servicos li button{font-size:18px;line-height:1.4}
@@ -333,12 +347,12 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
 
 <header class="hero" id="topo">
   <div class="ph"><picture>
-    <source media="(max-width:860px)" srcset="img/hero-jd-m.webp">
-    <img id="hero-img" src="img/hero-jd.webp" width="1440" height="750" fetchpriority="high" decoding="async" alt="Escavadeira John Deere da Pinheiro Locações com o braço erguido em obra rural">
+    <source media="(max-width:860px)" srcset="img/hero-campo-m.webp">
+    <img id="hero-img" src="img/hero-campo.webp" width="1800" height="873" fetchpriority="high" decoding="async" alt="Escavadeira da Pinheiro Locações em área de plantio, com o eucaliptal no horizonte">
   </picture></div>
   <div class="tint"></div>
   <canvas class="ridges" id="ridges" aria-hidden="true"></canvas>
-  <div class="level" aria-hidden="true"><span id="lvl-t">Terreno bruto</span><span class="bar"><i id="lvl"></i></span><b id="lvl-n">0%</b></div>
+  <div class="level" id="level"><span id="lvl-t">Passe o mouse para nivelar</span><span class="bar" aria-hidden="true"><i id="lvl"></i></span><b id="lvl-n">0%</b><button type="button" class="lv-btn" id="lvl-btn">Nivelar</button></div>
   <div class="ground">
     <h1><span class="ln ln1">Pinheiro</span><span class="ln ln2">Locações</span></h1>
     <div class="mid" id="hero-mid">
@@ -589,20 +603,37 @@ function size(){dpr=Math.min(2,devicePixelRatio||1);
   BAND=hero.offsetHeight*(mobile?.19:.2);
   const f=fc.getBoundingClientRect();FW=f.width;FH=f.height;fc.width=Math.round(FW*dpr);fc.height=Math.round(FH*dpr)}
 size();addEventListener('resize',()=>{size();drawAll(performance.now())});
-let heroP=0,intro=reduce?1:0,mx=.5,my=.5,mb=0,mbT=0;
-function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.75)));lvl.style.transform=`scaleX(${heroP})`;lvlN.textContent=Math.round(heroP*100)+'%';lvlT.textContent=heroP>.98?'Terreno nivelado':'Terreno bruto'}
-hero.addEventListener('pointermove',e=>{const r=rc.getBoundingClientRect();mx=(e.clientX-r.left)/r.width;my=(e.clientY-r.top)/BAND;mbT=(my>-.3&&my<1.1)?1:0},{passive:true});
-hero.addEventListener('pointerleave',()=>mbT=0);
+let heroP=0,intro=reduce?1:0;
+/* terraplenagem interativa: o mouse ou o dedo nivela o terreno e a porcentagem acompanha */
+const LG=180,L=new Float32Array(LG),Ld=new Float32Array(LG),levelBox=$('#level'),lvlBtn=$('#lvl-btn');
+const HINT=(fine?'Passe o mouse para nivelar':'Arraste o dedo para nivelar');lvlT.textContent=HINT;
+let avgL=0,shown=-1,wasDone=false,sweepAt=null,pX=null,pY=null;
+function brush(u,str){const rad=.065;for(let g=0;g<LG;g++){const d=(g/(LG-1)-u)/rad,w=Math.exp(-d*d);if(w>.01)L[g]=Math.min(1,L[g]+str*w)}}
+function setCurBand(on){const c=$('#cur');if(!c||!fine)return;const sp=c.querySelector('span');
+  if(on){c.classList.add('label');sp.textContent='Nivelar';c.dataset.band=1}else if(c.dataset.band){c.classList.remove('label');sp.textContent='';delete c.dataset.band}}
+hero.addEventListener('pointermove',e=>{const r=rc.getBoundingClientRect(),u=(e.clientX-r.left)/r.width,v=(e.clientY-r.top)/BAND;
+  const inBand=u>=0&&u<=1&&v>-.4&&v<1.2&&!e.target.closest('a,button');
+  if(inBand){if(pX!==null){const d=Math.hypot(e.clientX-pX,(e.clientY-pY)*.5);brush(u,Math.min(.3,d/r.width*3.2))}pX=e.clientX;pY=e.clientY}else pX=null;
+  setCurBand(inBand)},{passive:true});
+hero.addEventListener('pointerleave',()=>{pX=null;setCurBand(false)});
+hero.addEventListener('pointerdown',e=>{pX=e.clientX;pY=e.clientY},{passive:true});
+lvlBtn.addEventListener('click',()=>{if(avgL>.97){L.fill(0);wasDone=false}else if(reduce){L.fill(1)}else sweepAt=performance.now()});
+function updLevel(){const pct=1-(1-heroP)*(1-avgL),p=Math.round(pct*100);
+  lvl.style.transform=`scaleX(${pct})`;if(p!==shown){lvlN.textContent=p+'%';shown=p}
+  const done=pct>.985;levelBox.classList.toggle('done',done);
+  lvlT.textContent=done?'Terreno nivelado':avgL>.005||heroP>.01?'Terraplenando…':HINT;
+  lvlBtn.textContent=avgL>.97?'Refazer':'Nivelar';lvlBtn.setAttribute('aria-label',avgL>.97?'Refazer o terreno':'Nivelar o terreno automaticamente')}
+function heroProg(){heroP=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.75)));updLevel()}
 const STEP=mobile?10:8;
-function drawRidges(t){const A=intro*(1-heroP),gap=(BAND-40)/(RN-1),amp=BAND*.16;
+function drawRidges(t){const A=intro*(1-heroP),gap=(BAND-40)/(RN-1),amp=BAND*.21;
+  const n0=Math.ceil(RW/STEP)+1,lv=new Float32Array(n0);for(let k=0;k<n0;k++){const g=Math.min(LG-1,Math.round(k*STEP/RW*(LG-1)));lv[k]=1-Ld[g]}
   rx.setTransform(dpr,0,0,dpr,0,0);rx.clearRect(0,0,RW,RHc);rx.lineJoin='round';
   const n=Math.ceil(RW/STEP)+1,ys=new Float32Array(n);
   for(const r of R){const yb=24+r.i*gap,fi=r.i/(RN-1);
     for(let k=0;k<n;k++){const x=k*STEP,u=x/RW,env=Math.pow(Math.sin(Math.PI*Math.min(1,u)),1.6);let h=0;
       for(const p of r.pk){const kx=p.x+.02*Math.sin(t*.25+r.ph[0]),d=(u-kx)/p.w;h+=p.h*(1+.15*Math.sin(t*.7+r.i))*Math.exp(-d*d)}
       const no=Math.sin(u*23+r.ph[0]+t*.5)*.08+Math.sin(u*47+r.ph[1]-t*.4)*.05+Math.sin(u*9+r.ph[2])*.1;
-      const du=(u-mx)/.07,dv=(fi-my)/.22,bump=mb*Math.exp(-du*du-dv*dv)*1.1;
-      ys[k]=yb-A*env*(h+Math.max(0,no+.12))*amp-bump*amp*.8*(1-heroP)}
+      ys[k]=yb-A*lv[k]*env*(h+Math.max(0,no+.12))*amp}
     rx.beginPath();rx.moveTo(-4,ys[0]);for(let k=1;k<n;k++)rx.lineTo(k*STEP,ys[k]);rx.lineTo(RW+4,ys[n-1]);
     rx.lineTo(RW+4,RHc+4);rx.lineTo(-4,RHc+4);rx.closePath();rx.fillStyle=NAVY;rx.fill();
     rx.beginPath();rx.moveTo(-4,ys[0]);for(let k=1;k<n;k++)rx.lineTo(k*STEP,ys[k]);rx.lineTo(RW+4,ys[n-1]);
@@ -616,7 +647,11 @@ new IntersectionObserver(es=>es.forEach(e=>flatVis=e.isIntersecting)).observe(fc
 function drawAll(now){const t=reduce?0:(now-t0)/1000;drawRidges(t);drawFlat(t)}
 function frame(now){const t=(now-t0)/1000;
   if(introStart===null)introStart=now;const k=Math.min(1,(now-introStart-250)/1700);intro=k<=0?0:1-Math.pow(1-k,3);
-  mb+=(mbT-mb)*.06;
+  if(sweepAt!==null){const p=(now-sweepAt)/1500;if(p>=1){L.fill(1);sweepAt=null}else brush(Math.min(1,p*1.08),.5)}
+  let sum=0;for(let g=0;g<LG;g++){Ld[g]+=(L[g]-Ld[g])*.12;sum+=Ld[g]}avgL=sum/LG;
+  if(avgL>.965&&!wasDone){wasDone=true;L.fill(1);rc.animate([{filter:'brightness(1.8)'},{filter:'brightness(1)'}],{duration:900,easing:'ease-out'})}
+  if(avgL<.5)wasDone=false;
+  updLevel();
   if(!document.hidden){if(heroVis)drawRidges(t);if(flatVis)drawFlat(t)}
   requestAnimationFrame(frame)}
 heroProg();
