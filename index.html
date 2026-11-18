@@ -318,7 +318,7 @@ footer .name .ch:hover{transform:translateY(-14%);color:var(--accent)}
   .historia .r1,.historia .r2,.historia .r3{grid-template-columns:1fr;row-gap:40px}
   .facts{grid-template-columns:1fr 1fr;order:2}
   .historia .r2,.historia .r3{margin-top:56px}
-  .contato .num{font-size:12.4vw}
+  .contato .num{font-size:8vw;letter-spacing:-.05em;max-width:100%;display:flex;align-items:center}.contato .num .dot{flex:none;width:.3em;height:.3em;vertical-align:0;margin-right:.25em}
   .contato .foot{flex-direction:column}
   .contato .foot div[style]{text-align:left!important}
   footer .places,footer .links{grid-column:1 / -1}
@@ -597,8 +597,9 @@ const hero=$('.hero'),lvl=$('#lvl'),lvlT=$('#lvl-t'),lvlN=$('#lvl-n');
 const RN=mobile?18:26,GOLD='#F0BC2E',NAVY='#0F1636';
 const R=[...Array(RN)].map((_,i)=>({i,gold:i%7===4,a:.22+.78*i/(RN-1),ph:[Math.random()*9,Math.random()*9,Math.random()*9],pk:[...Array(3)].map(()=>({x:.12+Math.random()*.8,w:.035+Math.random()*.07,h:.35+Math.random()*.85}))}));
 const F=[...Array(mobile?14:22)].map((_,i)=>({a:[Math.random()*6,Math.random()*6],s:.4+Math.random()*.5}));
-let dpr=1,RW=0,RHc=0,BAND=0,FW=0,FH=0;
+let dpr=1,RW=0,RHc=0,BAND=0,PAD=0,FW=0,FH=0;
 function size(){dpr=Math.min(2,devicePixelRatio||1);
+  BAND=hero.offsetHeight*(mobile?.19:.2);PAD=Math.ceil(BAND*.45);rc.style.top=`calc(${mobile?30:42}% - ${PAD}px)`;rc.style.height=`calc(${mobile?70:58}% + ${PAD}px)`;
   const r=rc.getBoundingClientRect();RW=r.width;RHc=r.height;rc.width=Math.round(RW*dpr);rc.height=Math.round(RHc*dpr);
   BAND=hero.offsetHeight*(mobile?.19:.2);
   const f=fc.getBoundingClientRect();FW=f.width;FH=f.height;fc.width=Math.round(FW*dpr);fc.height=Math.round(FH*dpr)}
@@ -611,7 +612,7 @@ let avgL=0,shown=-1,wasDone=false,sweepAt=null,pX=null,pY=null;
 function brush(u,str){const rad=.065;for(let g=0;g<LG;g++){const d=(g/(LG-1)-u)/rad,w=Math.exp(-d*d);if(w>.01)L[g]=Math.min(1,L[g]+str*w)}}
 function setCurBand(on){const c=$('#cur');if(!c||!fine)return;const sp=c.querySelector('span');
   if(on){c.classList.add('label');sp.textContent='Nivelar';c.dataset.band=1}else if(c.dataset.band){c.classList.remove('label');sp.textContent='';delete c.dataset.band}}
-hero.addEventListener('pointermove',e=>{const r=rc.getBoundingClientRect(),u=(e.clientX-r.left)/r.width,v=(e.clientY-r.top)/BAND;
+hero.addEventListener('pointermove',e=>{const r=rc.getBoundingClientRect(),u=(e.clientX-r.left)/r.width,v=(e.clientY-r.top-PAD)/BAND;
   const inBand=u>=0&&u<=1&&v>-.4&&v<1.2&&!e.target.closest('a,button');
   if(inBand){if(pX!==null){const d=Math.hypot(e.clientX-pX,(e.clientY-pY)*.5);brush(u,Math.min(.3,d/r.width*3.2))}pX=e.clientX;pY=e.clientY}else pX=null;
   setCurBand(inBand)},{passive:true});
@@ -629,7 +630,7 @@ function drawRidges(t){const A=intro*(1-heroP),gap=(BAND-40)/(RN-1),amp=BAND*.21
   const n0=Math.ceil(RW/STEP)+1,lv=new Float32Array(n0);for(let k=0;k<n0;k++){const g=Math.min(LG-1,Math.round(k*STEP/RW*(LG-1)));lv[k]=1-Ld[g]}
   rx.setTransform(dpr,0,0,dpr,0,0);rx.clearRect(0,0,RW,RHc);rx.lineJoin='round';
   const n=Math.ceil(RW/STEP)+1,ys=new Float32Array(n);
-  for(const r of R){const yb=24+r.i*gap,fi=r.i/(RN-1);
+  for(const r of R){const yb=PAD+24+r.i*gap,fi=r.i/(RN-1);
     for(let k=0;k<n;k++){const x=k*STEP,u=x/RW,env=Math.pow(Math.sin(Math.PI*Math.min(1,u)),1.6);let h=0;
       for(const p of r.pk){const kx=p.x+.02*Math.sin(t*.25+r.ph[0]),d=(u-kx)/p.w;h+=p.h*(1+.15*Math.sin(t*.7+r.i))*Math.exp(-d*d)}
       const no=Math.sin(u*23+r.ph[0]+t*.5)*.08+Math.sin(u*47+r.ph[1]-t*.4)*.05+Math.sin(u*9+r.ph[2])*.1;
